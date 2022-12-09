@@ -1,0 +1,17 @@
+.search {
+    display: flex;
+    border-radius: 30px;
+    background-color: #eff2f5;
+}
+
+.search > .serch-icon {
+    color: purple;
+}
+
+.search > .search-input {
+    margin-left: 10px;
+    border: none;
+    background-color: transparent;
+    outline-width: 0;
+    width: 100%;
+}
