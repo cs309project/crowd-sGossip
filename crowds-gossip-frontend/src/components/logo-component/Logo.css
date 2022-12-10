@@ -1,6 +1,6 @@
-.image{
-    width: 40px;
-    border-radius: 40px;
+.logo > .image{
+    width: 90px;
+    border-radius: 30px;
 }
 
 
