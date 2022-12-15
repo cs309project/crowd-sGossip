@@ -22,63 +22,7 @@ import Logo from "../../assets/logo2.png";
   
    }  );
   //btshtghl lma el A ttghiar
-
-  // const toastOptions = {
-  //   position: "bottom-right",
-  //   autoClose: 8000,
-  //   pauseOnHover: true,
-  //   draggable: true,
-  //   theme: "dark",
-  // };
-  // useEffect(()=>{
-  //   if(localStorage.getItem("chat-app-user")){
-  //       navigate('/');
-  //   }
-  // } ,[navigate]);
-  
-
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   if (handleValidation()) {
-  //     //btakhod el values bta3tha mn el values
-  //     const { username,password   } = values;
-  //     const { data } = await axios.post(loginRoute, {
-  //       username,
-  //       password,
-  //     });
-
-  //     if (data.status === false) {
-  //       toast.error(data.msg, toastOptions);
-  //     }
-  //     if (data.status === true) {
-  //       localStorage.setItem('chat-app-user', JSON.stringify(data.user));
-        
-  //     }navigate("/");
-  //   }
-  // };
-  // const handleValidation = () => {
-  //   const { password, username } = values;
-  //   if (password ==="") {
-  //       toast.error(
-  //           "Email And Pasword is Required.",
-  //           toastOptions
-  //         );
-  //     return false;
-  //   } else if (username.length ==="") {
-  //     toast.error(
-  //       "Email And Pasword is Required.",
-  //       toastOptions
-  //     );
-  //     return false;
-  //   } 
-
-  //   return true;
-  // };
-
  
-
-  
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
