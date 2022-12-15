@@ -1,0 +1,56 @@
+.container {
+    margin: 5px 20px;
+    background-color: #eff2f5;
+    border-radius: 20px;
+    padding: 5px;
+    width :60%;
+}
+.author-container > img{
+    height: 40px;
+    padding: 0;
+}
+
+.author-container {
+    display: flex;
+    height: 20px;
+}
+.author-container > p{
+    font-size: 12px;
+}
+.image-container>img {
+    margin-left: auto;
+    margin-right:auto;
+    display: block;
+    width :90%;
+}
+
+.comments {
+    justify-content: space-between;
+    padding: 10px;
+}
+.comments > div > input {
+    border-radius:20px ;
+    border: none;
+}
+.comments > div > input:focus {
+    outline: none;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+    width: 100%;
+}
+.comments > div > p {
+    margin-right: 10px;
+}
+
+.comment-button {
+    background-color: #1E9E6D;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 20px;
+    border:none;
+}
+.comment-button:hover {
+    background-color: red;
+    color: yellow;
+}
