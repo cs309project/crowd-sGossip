@@ -1,26 +1,26 @@
 //bstakhdmo mkan el array 3alshan brag3 mno hagat is async byhsal 3aliha life cycle w athakm fiha
-import React,{useState }from "react";
-// import{ Link  } from "react-router-dom";
+import React,{useState, /*useEffect*/ }from "react";
+import{ Link ,useNavigate } from "react-router-dom";
 //bykhalini a style f file javaScribt
 import styled from 'styled-components';
 import Logo from "../../assets/logo2.png";
 
+// import {ToastContainer,/*toast*/} from"react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
-
- function Register() {
-  
+ function Login() {
+  const navigate = useNavigate();
 
   //values di el haga elly 3ndy 
   //set values di el haga elly bttghayr
   const [values, setValues] = useState({
     username: "",
-    email: "",
     password: "",
-    confirmPassword: "",
+   
   
    }  );
   //btshtghl lma el A ttghiar
-   
+ 
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -32,7 +32,7 @@ import Logo from "../../assets/logo2.png";
   return (
     <>
       <FormContainer>
-        <form action="" /*onSubmit={(event) => handleSubmit(event)}*/>
+        <form action="crowds-gossip-frontend/src/pages/login/Login.js" /*onSubmit={(event) => handleSubmit(event)}*/>
           <div className="brand">
             <img src={Logo} alt="logo" />
             <h1>crowd's gossip</h1>
@@ -42,28 +42,19 @@ import Logo from "../../assets/logo2.png";
             placeholder="Username"
             name="username"
             onChange={(e) => handleChange(e)}
+            min="3"
           />
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            onChange={(e) => handleChange(e)}
-          />
+          
           <input
             type="password"
             placeholder="Password"
             name="password"
             onChange={(e) => handleChange(e)}
           />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            onChange={(e) => handleChange(e)}
-          />
-          <button type="submit">Creat User</button>
+          
+          <button type="submit">Login</button>
           <span>
-            Already have an account ?{/*<Link to="/login">Login.</Link>*/}
+            Don't have an Account ? <Link to="/register">Register.</Link>
           </span>
         </form>
       </FormContainer>
@@ -104,7 +95,7 @@ h1{
     gap: 2rem;
     background-color: #00000076;
     border-radius:2rem;
-    padding: 2rem 4rem;
+    padding: 0.5rem 4rem;
     box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
  
  input{
@@ -148,7 +139,7 @@ button{
  }
 }
  }
-}
-`;export default Register;
+`;
+ export default Login;
 
 
