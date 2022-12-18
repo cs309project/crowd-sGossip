@@ -22,3 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 ./crowds-gossip-frontend/package-lock.json
+.idea/vcs.xml
+.idea/modules.xml
+.idea/crowd-sGossip.iml
+.idea
