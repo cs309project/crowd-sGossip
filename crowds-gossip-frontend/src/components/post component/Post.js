@@ -29,7 +29,7 @@ function Post({profileIcon,authorName,text,photoLink,comments}) {
                 </div>
                 <hr/>
 
-                {comments.map((value)=>{<Comment text={value.text} userName={value.username}/>})}
+                {comments.map((value, index)=>{return <Comment text={value.text} userName={value.username} key={index}/>})}
             </div>
         </div>
     );
