@@ -1,0 +1,4 @@
+.UserListPageContanier{
+    display: flex;
+    flex-wrap: wrap;
+}
