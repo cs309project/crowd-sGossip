@@ -1,0 +1,30 @@
+.vote-container {
+    background-color: lightgray;
+    border-radius: 40px;
+}
+
+.vote-container > .arrow-up-div {
+    display: flex;
+    justify-content: center;
+    color: green;
+}
+
+.vote-container > .up-vote-stat {
+    display: flex;
+    justify-content: center;
+    color: green;
+    font-size: 20px;
+}
+
+.vote-container > .down-vote-stat {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 20px;
+}
+
+.vote-container > .arrow-down-div {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
