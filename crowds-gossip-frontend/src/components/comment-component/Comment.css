@@ -1,4 +1,32 @@
-#user {
+.comment-container > .comment-content > #user {
     font-weight: bold;
     font-size: 14px;
+    margin-left: 8px;
+}
+
+.comment-container > .commenter {
+    display: flex;
+    margin-top: 8px;
+}
+
+.comment-container > img {
+    height: 40px;
+    border-radius: 100%;
+    margin-top: 8px;
+}
+
+.comment-container > .comment {
+    margin-left: 8px;
+}
+
+.comment-container {
+    display: flex;
+}
+
+.comment-container > .comment-content {
+    margin-top: 8px;
+    background-color: #eff2f5;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 20px;
 }
