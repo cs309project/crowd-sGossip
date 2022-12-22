@@ -4,11 +4,11 @@
 
 .Header{
     height: 60px;
-    width: 100%;
-    border: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
     background-color: white;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
 }
@@ -27,21 +27,24 @@
 
 .SearchBar{
     width: 300px;
-    margin:auto;
 }
 
 .IconChatButtonView{
     background-color: #eff2f5;
+    color: rgb(154, 84, 219);
     width: 40px;
     height: 40px;
     border-radius: 40px;
     border: none;
-    margin-right: 15px;
+    margin-right: 8px;
+    cursor: pointer;
 }
 
-.IconChatButtonView > .ChatIcon{
-    color: rgb(154, 84, 219);
+.IconChatButtonView:hover{
+    background-color: rgb(154, 84, 219);
+    color: #eff2f5;
 }
+
 
 .ProfileView{
  height: 200px;
@@ -81,6 +84,7 @@
 
 .EditProfileButton{
     background-color: #eff2f5;
+    color:  rgb(154, 84, 219);
     margin: auto;
     display: flex;
     align-items: center;
@@ -88,18 +92,17 @@
     width: 120px;
     border-radius: 10px;
     border: none;
+    cursor: pointer;
 }
 
-.EditProfileButton > .EditIcon{
-    color: rgb(154, 84, 219);
+.EditProfileButton:hover{
+    background-color: rgb(154, 84, 219);
+    color: white;
 }
 
-.EditProfileButton > p {
-    color: rgb(154, 84, 219);
-}
 
 .UserProfileContent{
-    width: 70%;
+    width: 50%;
     margin: auto;
 }
 .UserProfileContent > .CreatePostView{
@@ -117,5 +120,5 @@
 .FeedView{
     background-color: #eff2f5;
     margin-top: 25px;
-    padding: 10px;
+    width: 100%;
 }
