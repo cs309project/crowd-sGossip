@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Post from '../post component/Post'
-import './Feed.css'
 
-function Feed({ Posts }) {
+function Feed({Posts}) {
     const [posts, setPosts] = useState(Posts)
 
     return (
@@ -10,8 +9,8 @@ function Feed({ Posts }) {
             {
                 posts.map((e, index) => {
                     return (
-                        <div className='post-container' key={index}>
-                            <Post profileIcon={e.profileIcon} authorName={e.authorName} text={e.text} comments={e.comments} photoLink={e.photoLink} />
+                        <div key={index}>
+                            <Post profileIcon={e.profileIcon} authorName={e.authorName} text={e.text} comments={e.comments}/>
                         </div>
                     );
                 })
