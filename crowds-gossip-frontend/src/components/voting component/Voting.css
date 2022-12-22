@@ -1,0 +1,32 @@
+.vote-container {
+    background-color: lightgray;
+    border-radius: 40px;
+}
+
+.vote-container>.up-vote-container {
+   text-align: center;
+    flex-direction: column;
+}
+
+.vote-container>.up-vote-container>.arrow-up {
+    color: green;
+}
+
+.vote-container>.up-vote-container>p {
+    color: green;
+    margin: auto;
+}
+
+.vote-container>.down-vote-container {
+    text-align: center;
+    flex-direction: column;
+}
+
+.vote-container>.down-vote-container>.arrow-down {
+    color: red;
+}
+
+.vote-container>.down-vote-container>p {
+    color: red;
+    margin: auto;
+}
