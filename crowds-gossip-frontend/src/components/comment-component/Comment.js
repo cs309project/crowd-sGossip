@@ -1,10 +1,17 @@
 import React from 'react';
 import './Comment.css'
-function Comment({userName,text}) {
+function Comment({ userName, text, profilePic }) {
     return (
-        <div>
-            <p id={'user'}>{userName}</p>
-            <p>{text}</p>
+        <div className='comment-container'>
+            <img
+                src={profilePic}
+                alt=''
+            />
+            <div className='comment-content'>
+                <p id={'user'}>{userName}</p>
+                <p className='comment'>{text}</p>
+            </div>
+
         </div>
     );
 }
