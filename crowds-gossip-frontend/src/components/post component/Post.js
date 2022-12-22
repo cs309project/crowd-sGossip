@@ -1,18 +1,18 @@
 import './Post.css'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Comment from '../comment-component/Comment'
-function Post({profileIcon,authorName,text,photoLink,comments}) {
+function Post({ profileIcon, authorName, text, photoLink, comments }) {
     const [commentText, setCommentText] = useState('')
-    const change = (e)=>{
+    const change = (e) => {
         setCommentText(e.target.value)
     }
-    const addComment = ()=>{
+    const addComment = () => {
 
     }
     return (
         <div className={'container'}>
             <div className={'author-container'}>
-                <img src={profileIcon} alt={""}/>
+                <img src={profileIcon} alt={""} />
                 <p>{authorName}</p>
             </div>
             <div className={'text-container'}>
@@ -20,16 +20,23 @@ function Post({profileIcon,authorName,text,photoLink,comments}) {
             </div>
             <div className={'image-container'}>
                 <img src={photoLink}
-                alt={""}/>
+                    alt={""} />
             </div>
             <div className={'comments'}>
-                <div style={{display:'flex'}}>
-                    <input placeholder={'write a comment'} onChange={change}/>
+                <p style={{ fontWeight: 'bold' }}>Comments</p>
+                <hr />
+                <div style={{ display: 'flex' }}>
+                    <img src={profileIcon} alt={""} />
+                    <input placeholder={'write a comment'} onChange={change} />
                     <button className={'comment-button'} onClick={addComment}>comment</button>
                 </div>
-                <hr/>
-
-                {comments.map((value, index)=>{return <Comment text={value.text} userName={value.username} key={index}/>})}
+                {comments.map((value, index) => {
+                    return <Comment
+                        text={value.text}
+                        userName={value.username}
+                        profilePic={value.profilePic}
+                        key={index} />
+                })}
             </div>
         </div>
     );
