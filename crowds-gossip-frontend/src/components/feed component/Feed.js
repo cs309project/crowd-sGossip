@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Post from '../post component/Post'
 
-function Feed() {
-    const [posts, setPosts] = useState([])
+function Feed({Posts}) {
+    const [posts, setPosts] = useState(Posts)
 
     return (
         <div className='feed-container'>
