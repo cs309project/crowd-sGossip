@@ -3,28 +3,30 @@
     border-radius: 40px;
 }
 
-.vote-container > .arrow-up-div {
-    display: flex;
-    justify-content: center;
+.vote-container>.up-vote-container {
+   text-align: center;
+    flex-direction: column;
+}
+
+.vote-container>.up-vote-container>.arrow-up {
     color: green;
 }
 
-.vote-container > .up-vote-stat {
-    display: flex;
-    justify-content: center;
+.vote-container>.up-vote-container>p {
     color: green;
-    font-size: 20px;
+    margin: auto;
 }
 
-.vote-container > .down-vote-stat {
-    display: flex;
-    justify-content: center;
-    color: red;
-    font-size: 20px;
+.vote-container>.down-vote-container {
+    text-align: center;
+    flex-direction: column;
 }
 
-.vote-container > .arrow-down-div {
-    display: flex;
-    justify-content: center;
+.vote-container>.down-vote-container>.arrow-down {
     color: red;
+}
+
+.vote-container>.down-vote-container>p {
+    color: red;
+    margin: auto;
 }
