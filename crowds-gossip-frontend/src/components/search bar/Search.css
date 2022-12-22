@@ -2,10 +2,12 @@
     display: flex;
     border-radius: 30px;
     background-color: #eff2f5;
+    height: 40px;
+    align-items: center;
 }
 
 .search > .serch-icon {
-    color: purple;
+    color: rgb(154, 84, 219);
 }
 
 .search > .search-input {
