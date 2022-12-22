@@ -71,13 +71,22 @@
     color: rgb(154, 84, 219);
 }
 
-.container > .text-container {
+.container>.div-to-flex>.content>.text-container {
     margin: 8px;
     padding-top: 8px;
 }
 
-.container > .comments > div > img {
+.container>.comments>div>img {
     height: 40px;
     border-radius: 100%;
     margin-right: 8px;
+}
+
+.container>.div-to-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container>.div-to-flex>.voting {
+    margin-left: 8px;
 }
