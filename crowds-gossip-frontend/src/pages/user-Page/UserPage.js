@@ -15,6 +15,7 @@ async function handleEditProfileButton() {
 
 }
 
+
 function UserPage({ profileIcon, userName, followers }) {
     return (
         <div className='Contanier'>

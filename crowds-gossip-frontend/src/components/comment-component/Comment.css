@@ -15,7 +15,7 @@
     margin-top: 8px;
 }
 
-.comment-container > .comment {
+.comment-container > .comment-content > .comment {
     margin-left: 8px;
 }
 

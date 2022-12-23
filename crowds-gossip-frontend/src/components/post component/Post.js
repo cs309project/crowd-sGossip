@@ -41,7 +41,7 @@ function Post({ profileIcon, authorName, text, photoLink, comments }) {
                 {comments.map((value, index) => {
                     return <Comment
                         text={value.text}
-                        userName={value.username}
+                        userName={value.userName}
                         profilePic={value.profilePic}
                         key={index} />
                 })}
