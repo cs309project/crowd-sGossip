@@ -1,37 +1,22 @@
 import React from 'react'
 import './UserPage.css'
-import Logo from '../../components/logo-component/Logo.js'
-import Search from '../../components/search bar/Search.js'
 import CreatePost from '../../components/create post component/CreatePost.js'
 import Feed from '../../components/feed component/Feed.js'
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-
-async function handleChatButton() {
-
-}
+import Header from '../../components/header-component/Header';
 
 async function handleEditProfileButton() {
 
 }
 
+const dummyPosts = []
 
 function UserPage({ profileIcon, userName, followers }) {
     return (
         <div className='Contanier'>
-            <header className='Header'>
-                <div className='Logo'>
-                    <Logo />
-                    <p>Crowd's gossip</p>
-                </div>
-                <div className='SearchBar'>
-                    <Search />
-                </div>
-                <button className='IconChatButtonView'
-                    onClick={() => handleChatButton()}>
-                    <ForumOutlinedIcon className='ChatIcon' />
-                </button>
-            </header>
+            <div className='HeaderView'>
+                <Header/>
+            </div>
             <div className='Body'>
                 <div className='ProfileView'>
                     <div className='Img-Info_View'>
@@ -54,7 +39,7 @@ function UserPage({ profileIcon, userName, followers }) {
                         <CreatePost profileIcon={profileIcon} />
                     </div>
                     <div className='FeedView'>
-                        <Feed/>
+                        <Feed Posts={dummyPosts} />
                     </div>
                 </div>
             </div>
