@@ -2,7 +2,7 @@ import React from 'react';
 import CreatePost from '../../components/create post component/CreatePost';
 import Header from '../../components/header-component/Header';
 import PostsList from '../../components/posts list component/PostsList';
-import MessageUsersList from '../../components/message users list component/MessageUsersList'
+import ListUsers from '../../components/list users component/ListUsers'
 import './Feed.css'
 
 function Feed({ props }) {
@@ -24,12 +24,12 @@ function Feed({ props }) {
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
                     <div className='scroll'>
-                        <MessageUsersList props={props.followings} />
+                        <ListUsers props={props.followings} />
                     </div>
                     <hr />
                     <p>People who follow you</p>
                     <div className='scroll'>
-                        <MessageUsersList props={props.followers} />
+                        <ListUsers props={props.followers} />
                     </div>
                 </div>
             </div>
