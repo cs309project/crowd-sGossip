@@ -4,6 +4,7 @@ import CreatePost from '../../components/create post component/CreatePost.js'
 import Feed from '../../components/feed component/Feed.js'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Header from '../../components/header-component/Header';
+import SidePanel from '../../components/Side-Panel-component/SidePanel.js';
 
 async function handleEditProfileButton() {
 
@@ -15,7 +16,10 @@ function UserPage({ profileIcon, userName, followers }) {
     return (
         <div className='Contanier'>
             <div className='HeaderView'>
-                <Header/>
+                <Header />
+            </div>
+            <div className='Side-left-panel'>
+                <SidePanel profileIcon={profileIcon} userName={userName} />
             </div>
             <div className='Body'>
                 <div className='ProfileView'>
