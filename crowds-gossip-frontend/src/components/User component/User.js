@@ -1,5 +1,5 @@
 import React from 'react'
-import "./UserInMessages.css"
+import "./User.css"
 
 function UserInMessages({ProfileImg , name}) {
   return (
