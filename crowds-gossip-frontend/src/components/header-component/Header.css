@@ -2,6 +2,10 @@
     height: 60px;
     border-bottom: 1px solid lightgray;
     background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,7 +34,7 @@
     height: 40px;
     border-radius: 40px;
     border: none;
-    margin-right: 8px;
+    margin-right: 20px;
     cursor: pointer;
 }
 

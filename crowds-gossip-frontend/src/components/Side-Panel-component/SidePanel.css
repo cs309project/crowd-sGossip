@@ -1,0 +1,140 @@
+.SidePanel-container{
+    background-color: white;
+    width: 18%;
+    position: fixed;
+    bottom: 0;
+    top: 60px  ;
+    border-top: 1px solid lightgray;
+    border-bottom-right-radius: 20px ;
+}
+
+.HomePage-navigator{
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 50px;
+}
+
+.HomePage-navigator:hover{
+    background-color: #eff2f5;
+}
+
+.HomePage-navigator > .HomeIcon{
+    height: 30px;
+    width: 30px;
+    margin-right: 8px;
+    margin-left: 10px;
+    color: rgb(154, 84, 219);
+}
+
+.HomePage-navigator > p {
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+.UserPage-navigator{
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    margin-left: 8px;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 50px;
+    margin-right: 8px;
+}
+
+.UserPage-navigator:hover{
+    background-color: #eff2f5;
+}
+
+.UserPage-navigator > img{
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    margin-right: 8px;
+    margin-left: 10px;
+}
+
+.UserPage-navigator > p {
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.SidePanel-container > hr {
+    margin: 18px;
+}
+
+.LogoutView{
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    margin-left: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 50px;
+}
+
+.LogoutView:hover{
+    background-color: #eff2f5;
+}
+
+.LogoutView > .LogoutIcon{
+    height: 30px;
+    width: 30px;
+    margin-right: 8px;
+    margin-left: 10px;
+    color: rgb(154, 84, 219);
+}
+
+.LogoutView > p{
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.ContactUsView{
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    margin-left: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 50px;
+}
+
+.ContactUsView:hover{
+    background-color: #eff2f5;
+}
+
+.ContactUsView > .ContactUsIcon{
+    height: 30px;
+    width: 30px;
+    margin-right: 8px;
+    margin-left: 10px;
+    color: rgb(154, 84, 219);
+}
+
+.ContactUsView > p{
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.SidePanel-container > .copyRightView{
+    position: absolute;
+    bottom: 5px;
+}
+
+.SidePanel-container > .copyRightView > p{
+    margin-left: 18px;
+    font-size: 12px;
+}
