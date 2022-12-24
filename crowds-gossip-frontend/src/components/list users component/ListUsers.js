@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import UserInMessages from '../user in messages component/UserInMessages';
 
-function MessageUsersList({props}) {
+function ListUsers({props}) {
     const [users, setUsers] = useState(props);
     return (
         <div>
@@ -14,4 +14,4 @@ function MessageUsersList({props}) {
     )
 }
 
-export default MessageUsersList
+export default ListUsers
