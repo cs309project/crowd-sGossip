@@ -4,6 +4,7 @@ import Header from '../../components/header-component/Header';
 import PostsList from '../../components/posts list component/PostsList';
 import ListUsers from '../../components/list users component/ListUsers'
 import './Feed.css'
+import SidePanel from '../../components/Side-Panel-component/SidePanel';
 
 function Feed({ props }) {
     return (
@@ -12,14 +13,8 @@ function Feed({ props }) {
                 <Header />
             </div>
             <div className='div-flex'>
-                <div className='main-container'>
-                    <div className='cp-container'>
-                        <p>Hi, {props.name}!</p>
-                        <CreatePost profileIcon={props.profileIcon} />
-                    </div>
-                    <div className='pl-container'>
-                        <PostsList Posts={props.posts} />
-                    </div>
+                <div className='side-panel-left-container'>
+                    <SidePanel />
                 </div>
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
@@ -30,6 +25,15 @@ function Feed({ props }) {
                     <p>People who follow you</p>
                     <div className='scroll'>
                         <ListUsers props={props.followers} />
+                    </div>
+                </div>
+                <div className='main-container'>
+                    <div className='cp-container'>
+                        <p>Hi, {props.name}!</p>
+                        <CreatePost profileIcon={props.profileIcon} />
+                    </div>
+                    <div className='pl-container'>
+                        <PostsList Posts={props.posts} />
                     </div>
                 </div>
             </div>
