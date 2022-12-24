@@ -1,7 +1,7 @@
 .UserInMessageComponent{
     display: flex;
     margin: 10px;
-    background-color: rgb(231, 231, 231);
+    background-color: white;
     border-radius: 35px;
     align-items: center;
 }
