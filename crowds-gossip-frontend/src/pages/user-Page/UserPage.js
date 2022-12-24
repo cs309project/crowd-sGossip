@@ -29,7 +29,7 @@ function UserPage({ profileIcon, userName, followers }) {
                             alt={""}></img>
                         <div className='UserInfo'>
                             <p id='Name'>{userName}</p>
-                            <p id='Friends'>{followers} friends</p>
+                            <p id='Friends'>{followers} followers</p>
                         </div>
                     </div>
                     <button className='EditProfileButton' onClick={() => handleEditProfileButton()}>
