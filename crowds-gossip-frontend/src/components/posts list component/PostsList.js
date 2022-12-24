@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Post from '../post component/Post'
-import './Feed.css'
+import './PostsList.css'
 
-function Feed({ Posts }) {
+function PostsList({ Posts }) {
     const [posts, setPosts] = useState(Posts)
 
     return (
@@ -20,4 +20,4 @@ function Feed({ Posts }) {
     )
 }
 
-export default Feed
+export default PostsList
