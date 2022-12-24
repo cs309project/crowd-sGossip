@@ -1,0 +1,55 @@
+.feed-container {
+    background-color: #eff2f5;
+}
+
+.feed-container>.HeaderView{
+    position: sticky;
+    top: 0;
+}
+
+.feed-container>.div-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.feed-container>.div-flex>.main-container {
+    width: 50%;
+}
+
+.feed-container>.div-flex>.main-container>.cp-container {
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+}
+
+.feed-container>.div-flex>.main-container>.cp-container>p {
+    color: rgb(154, 84, 219);
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.feed-container>.div-flex>.main-container>.pl-container{
+    margin-top: 20px;
+    margin: auto;
+}
+
+.feed-container>.div-flex>.side-panel-right-container {
+    width: 25%;
+    position: fixed;
+    right: 3px;
+}
+
+.feed-container>.div-flex>.side-panel-right-container>p {
+    margin-left: 10px;
+    color: rgb(154, 84, 219);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.feed-container>.div-flex>.side-panel-right-container>.scroll {
+    overflow: scroll;
+    height: 35vh;
+}
