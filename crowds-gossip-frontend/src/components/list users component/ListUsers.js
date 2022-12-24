@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import UserInMessages from '../user in messages component/UserInMessages';
+import User from '../User component/User';
 
 function ListUsers({props}) {
     const [users, setUsers] = useState(props);
@@ -7,7 +7,7 @@ function ListUsers({props}) {
         <div>
             {
                 users.map((e, index) => {
-                    return <UserInMessages key={index} ProfileImg={e.ProfileImg} name={e.name} />
+                    return <User key={index} ProfileImg={e.ProfileImg} name={e.name} />
                 })
             }
         </div>
