@@ -1,7 +1,7 @@
 import React from 'react'
 import './UserPage.css'
 import CreatePost from '../../components/create post component/CreatePost.js'
-import Feed from '../../components/feed component/Feed.js'
+import PostsList from '../../components/feed component/PostsList.js'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Header from '../../components/header-component/Header';
 
@@ -39,7 +39,7 @@ function UserPage({ profileIcon, userName, followers }) {
                         <CreatePost profileIcon={profileIcon} />
                     </div>
                     <div className='FeedView'>
-                        <Feed Posts={dummyPosts} />
+                        <PostsList Posts={dummyPosts} />
                     </div>
                 </div>
             </div>
