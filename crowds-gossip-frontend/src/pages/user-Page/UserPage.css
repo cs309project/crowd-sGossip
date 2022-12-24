@@ -1,19 +1,25 @@
 .Contanier{
     background-color: #eff2f5;
+    height: 100vh;
+    overflow-y: scroll;
 }
-.HeaderView{
-    position: sticky;
-    top: 0;
+
+.Body{
+    margin-left:auto;
+    margin-top: 60px;
+    width: 82%;
 }
 
 .ProfileView{
- height: 200px;
- display: flex;
- align-items: center;
- justify-content: center;
- background-color: white;
- border-bottom-left-radius: 20px;
- border-bottom-right-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .Img-Info_View{
