@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import UserInMessages from '../user in messages component/UserInMessages';
 
-function MessageUsersList() {
-    const [users, setUsers] = useState([]);
+function MessageUsersList({props}) {
+    const [users, setUsers] = useState(props);
     return (
         <div>
             {
