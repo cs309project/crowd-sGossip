@@ -4,21 +4,26 @@ import{ Link ,useNavigate } from "react-router-dom";
 //bykhalini a style f file javaScribt
 import styled from 'styled-components';
 import Logo from "../../assets/logo2.png";
+import * as API from '../../API/User'
 
-// import {ToastContainer,/*toast*/} from"react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import {ToastContainer,toast} from"react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
  function Login() {
   const navigate = useNavigate();
-
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
   //values di el haga elly 3ndy 
   //set values di el haga elly bttghayr
   const [values, setValues] = useState({
     username: "",
     password: "",
-   
-  
-   }  );
+   });
   //btshtghl lma el A ttghiar
  
 
@@ -26,13 +31,28 @@ import Logo from "../../assets/logo2.png";
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    API.login({
+      email:values.username,
+      password:values.password
+    }).then((res)=>{
+      if(!res.data.status){
+        toast.error('invalid email or password',toastOptions)
+        return false
+      }else{
+        navigate('/')
+        return true
+      }
+    })
+  }
   
   
 
   return (
     <>
       <FormContainer>
-        <form action="crowds-gossip-frontend/src/pages/login/Login.js" /*onSubmit={(event) => handleSubmit(event)}*/>
+        <form onSubmit={handleSubmit} >
           <div className="brand">
             <img src={Logo} alt="logo" />
             <h1>crowd's gossip</h1>
@@ -58,7 +78,7 @@ import Logo from "../../assets/logo2.png";
           </span>
         </form>
       </FormContainer>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </>
   );
 }

@@ -4,11 +4,13 @@ import{ Link  } from "react-router-dom";
 //bykhalini a style f file javaScribt
 import styled from 'styled-components';
 import Logo from "../../assets/logo2.png";
+import * as API from '../../API/User'
+import { useNavigate } from "react-router-dom";
 
 
 
  function Register() {
-  
+  const navigate = useNavigate()
 
   //values di el haga elly 3ndy 
   //set values di el haga elly bttghayr
@@ -26,13 +28,21 @@ import Logo from "../../assets/logo2.png";
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
+    await API.register({
+      name:values.username,
+      email:values.email,
+      password:values.password
+    })
+    navigate('/login')
+  }
   
 
   return (
     <>
       <FormContainer>
-        <form action="crowds-gossip-frontend/src/pages/register/Register.js" /*onSubmit={(event) => handleSubmit(event)}*/>
+        <form>
           <div className="brand">
             <img src={Logo} alt="logo" />
             <h1>crowd's gossip</h1>
@@ -61,7 +71,7 @@ import Logo from "../../assets/logo2.png";
             name="confirmPassword"
             onChange={(e) => handleChange(e)}
           />
-          <button type="submit">Creat User</button>
+          <button onClick={handleSubmit}>Creat User</button>
           <span>
             Already have an account ?<Link to="/login">Login.</Link>
           </span>
@@ -148,7 +158,6 @@ button{
  }
 }
  }
-}
 `;export default Register;
 
 
