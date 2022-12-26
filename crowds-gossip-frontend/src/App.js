@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Register from "./pages/register/Register";
 import Feed from "./pages/home/Feed";
 import { getById } from './API/User.js';
+import ChatBody from './components/conversation/ChatBody.js'
 function App() {
 
   const [user, setUser] = useState("")
@@ -20,7 +21,8 @@ function App() {
 
   return (
     <Routes>
-      <Route exact path={'/'} element={<Feed currentUser={user}/>} />
+      <Route exact path={'/'} element={<Feed currentUser={user} />} />
+      <Route path={'/chat'} element={<ChatBody />} />
       <Route path={'/login'} element={<Login />} />
       <Route path={'/register'} element={<Register />} />
     </Routes>
