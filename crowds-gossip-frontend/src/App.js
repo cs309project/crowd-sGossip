@@ -20,7 +20,7 @@ function App() {
 
   return (
     <Routes>
-      <Route exact path={'/'} element={<Feed currentUser={user} name={user.name} followers={[{ name: "mae," }]} followings={[{ name: "dd" }]} posts={user.unreadPosts} />} />
+      <Route exact path={'/'} element={<Feed currentUser={user}/>} />
       <Route path={'/login'} element={<Login />} />
       <Route path={'/register'} element={<Register />} />
     </Routes>
