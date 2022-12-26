@@ -4,7 +4,8 @@ const proxy = 'http://localhost:8000/'
 export const getUsers = async ()=> {
     return await (await axios.get('http://localhost:8000/users')).data
 }
-export const getById = async (id) => {return await (await axios.get(`${proxy}/users/${id}`)).data }
+export const getById = async (id) => {return await (await axios.get(`${proxy}users/user/${id}`)).data }
+
 export const register = async (user)=>{
     const {name,email,password}=user
     return await axios.post('http://localhost:8000/users/register',{

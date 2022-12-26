@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState , useEffect}from 'react';
 import CreatePost from '../../components/create post component/CreatePost';
 import Header from '../../components/header-component/Header';
 import PostsList from '../../components/posts list component/PostsList';
@@ -6,7 +6,21 @@ import ListUsers from '../../components/list users component/ListUsers'
 import './Feed.css'
 import SidePanel from '../../components/Side-Panel-component/SidePanel';
 
-function Feed({ followings, followers,name,profileIcon,posts}) {
+function Feed({currentUser}) {
+
+    const [unreadPosts, setUnreadPosts] = useState([])
+    const [userName, setUserName] = useState('')
+    const [followings, setFollowings] = useState([])
+    const [followers, setFollowers] = useState([])
+    const [profileIcon, setProfileIcon] = useState('')
+
+    useEffect(() => {
+        setUnreadPosts(currentUser.unreadPosts);
+        setUserName(currentUser.name);
+        setFollowings(currentUser.following);
+        setFollowers(currentUser.followers);
+      }, [currentUser]);
+
     return (
         <div className='feed-container'>
             <div className='HeaderView'>
@@ -14,7 +28,7 @@ function Feed({ followings, followers,name,profileIcon,posts}) {
             </div>
             <div className='div-flex'>
                 <div className='side-panel-left-container'>
-                    <SidePanel />
+                    <SidePanel userName={userName}/>
                 </div>
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
@@ -29,11 +43,11 @@ function Feed({ followings, followers,name,profileIcon,posts}) {
                 </div>
                 <div className='main-container'>
                     <div className='cp-container'>
-                        <p>Hi, {name}!</p>
+                        <p>Hi, {userName}!</p>
                         <CreatePost profileIcon={profileIcon} />
                     </div>
                     <div className='pl-container'>
-                        <PostsList Posts={posts} />
+                        <PostsList currentUser={currentUser} Posts={unreadPosts}/>
                     </div>
                 </div>
             </div>

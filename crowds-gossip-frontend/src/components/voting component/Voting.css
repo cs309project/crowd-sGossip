@@ -10,6 +10,11 @@
 
 .vote-container>.up-vote-container>.arrow-up {
     color: green;
+    cursor: pointer;
+}
+
+.vote-container>.up-vote-container>.arrow-up:hover {
+    color: mediumspringgreen;
 }
 
 .vote-container>.up-vote-container>p {
@@ -24,6 +29,11 @@
 
 .vote-container>.down-vote-container>.arrow-down {
     color: red;
+    cursor: pointer;
+}
+
+.vote-container>.down-vote-container>.arrow-down:hover {
+    color: coral;
 }
 
 .vote-container>.down-vote-container>p {

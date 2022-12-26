@@ -1,20 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { getById } from '../../API/User.js';
 import Post from '../post component/Post'
 import './PostsList.css'
 
-function PostsList({ Posts }) {
-    const [posts, setPosts] = useState(Posts)
+function PostsList({currentUser, Posts }) {
+
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        setPosts(Posts);
+    }, [Posts]);
 
     return (
         <div className='feed-container'>
             {
-                posts.map((e, index) => {
+                posts && posts.length? posts.map((e, index) => {
                     return (
                         <div className='post-container' key={index}>
-                            <Post profileIcon={e.profileIcon} authorName={e.authorName} text={e.text} comments={e.comments} photoLink={e.photoLink} />
+                            <Post currentUser={currentUser} postID={e} />
                         </div>
                     );
-                })
+                }):null
             }
         </div>
     )

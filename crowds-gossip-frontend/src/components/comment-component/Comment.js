@@ -1,6 +1,21 @@
-import React from 'react';
+import React, {useState , useEffect} from 'react';
+import { getById } from '../../API/User';
 import './Comment.css'
-function Comment({ userName, text, profilePic }) {
+function Comment({ commenterId, text, profilePic }) {
+
+    const [commenter, setCommenter] = useState('')
+
+    useEffect(() => {
+        
+        async function setCommenterName(){
+            await getById(commenterId.toString()).then(e => {
+                setCommenter(e.name)
+            })
+        }
+        setCommenterName()
+    
+    }, [])
+    
     return (
         <div className='comment-container'>
             <img
@@ -8,7 +23,7 @@ function Comment({ userName, text, profilePic }) {
                 alt=''
             />
             <div className='comment-content'>
-                <p id={'user'}>{userName}</p>
+                <p id={'user'}>{commenter}</p>
                 <p className='comment'>{text}</p>
             </div>
 

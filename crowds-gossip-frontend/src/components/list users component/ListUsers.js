@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import User from '../User component/User';
 
-function ListUsers({props}) {
-    const [users, setUsers] = useState(props);
+function ListUsers({ props }) {
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        setUsers(props)
+    }, [props]);
+
+
     return (
         <div>
             {
-                users.map((e, index) => {
-                    return <User key={index} ProfileImg={e.ProfileImg} name={e.name} />
-                })
+                users && users.length ? users.map((e, index) => {
+                    return <User key={index} uID={e} />
+                }) : null
             }
         </div>
     )
