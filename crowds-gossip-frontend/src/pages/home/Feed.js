@@ -20,7 +20,7 @@ function Feed({currentUser, followings, followers,name,profileIcon,posts}) {
             </div>
             <div className='div-flex'>
                 <div className='side-panel-left-container'>
-                    <SidePanel />
+                    <SidePanel userName={currentUser.name}/>
                 </div>
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
