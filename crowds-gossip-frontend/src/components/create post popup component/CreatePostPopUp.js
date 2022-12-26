@@ -20,6 +20,7 @@ function CreatePostPopUp(props) {
     }
     const handlePostButton = async (e)=>{
         await addPost({author:'63a85f9e6193bc664dd2b824' ,content: postText})
+        closeHandler(e)
     }
 
     useEffect(() => {
