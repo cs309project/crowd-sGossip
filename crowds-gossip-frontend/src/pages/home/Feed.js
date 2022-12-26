@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState , useEffect}from 'react';
 import CreatePost from '../../components/create post component/CreatePost';
 import Header from '../../components/header-component/Header';
 import PostsList from '../../components/posts list component/PostsList';
@@ -6,7 +6,13 @@ import ListUsers from '../../components/list users component/ListUsers'
 import './Feed.css'
 import SidePanel from '../../components/Side-Panel-component/SidePanel';
 
-function Feed({ followings, followers,name,profileIcon,posts}) {
+function Feed({currentUser, followings, followers,name,profileIcon,posts}) {
+
+    const [unreadPosts, setUnreadPosts] = useState([])
+    useEffect(() => {
+        setUnreadPosts(posts);
+      }, [posts]);
+
     return (
         <div className='feed-container'>
             <div className='HeaderView'>
@@ -33,7 +39,7 @@ function Feed({ followings, followers,name,profileIcon,posts}) {
                         <CreatePost profileIcon={profileIcon} />
                     </div>
                     <div className='pl-container'>
-                        <PostsList Posts={posts} />
+                        <PostsList currentUser={currentUser} Posts={unreadPosts}/>
                     </div>
                 </div>
             </div>
