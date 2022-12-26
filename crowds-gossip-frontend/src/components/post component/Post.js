@@ -1,5 +1,5 @@
 import './Post.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef } from 'react';
 import Comment from '../comment-component/Comment'
 import Voting from '../voting component/Voting';
 import { addComment, getPostsById } from '../../API/Post.js';
@@ -15,6 +15,7 @@ function Post({ currentUser, postID }) {
     const [profileIcon, setProfileIcon] = useState('')
     const [photoLink, setPhotoLink] = useState('')
     const [updated, setUpdated] = useState(false)
+    const ref = useRef(null)
 
 
     const change = (e) => {
@@ -23,6 +24,7 @@ function Post({ currentUser, postID }) {
     const handleAddComment = async () => {
         await addComment({ _id: postID, commenter: currentUser._id.toString(), comment: commentText })
         setUpdated(!updated)
+        ref.current.value=""
     }
 
     useEffect(() => {
@@ -80,7 +82,7 @@ function Post({ currentUser, postID }) {
                 <hr />
                 <div style={{ display: 'flex' }}>
                     <img src={profileIcon} alt={""} />
-                    <input placeholder={'write a comment'} onChange={change} />
+                    <input placeholder={'write a comment'} ref={ref} onChange={change} />
                     <button className={'comment-button'} onClick={handleAddComment}>comment</button>
                 </div>
                 {
