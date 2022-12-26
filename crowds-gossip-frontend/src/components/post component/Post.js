@@ -5,7 +5,7 @@ import Voting from '../voting component/Voting';
 import { addComment, getPostsById } from '../../API/Post.js';
 import { getById, } from '../../API/User';
 
-function Post({currentUser, postID }) {
+function Post({ currentUser, postID }) {
 
     const [commentText, setCommentText] = useState('')
     const [post, setPost] = useState("")
@@ -21,8 +21,8 @@ function Post({currentUser, postID }) {
         setCommentText(e.target.value)
     }
     const handleAddComment = async () => {
-       await addComment({_id:postID, commenter:currentUser._id.toString(), comment: commentText})
-       setUpdated(!updated)
+        await addComment({ _id: postID, commenter: currentUser._id.toString(), comment: commentText })
+        setUpdated(!updated)
     }
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function Post({currentUser, postID }) {
             }
             getPost()
         }
-    }, [postID , updated])
+    }, [postID, updated])
 
     useEffect(() => {
         if (post) {
@@ -65,7 +65,14 @@ function Post({currentUser, postID }) {
                     </div>
                 </div>
                 <div className='voting'>
-                    <Voting upVoters={[]} downVoters={[]} />
+                    <Voting
+                        currentUser={currentUser}
+                        upVoters={post.upVoters}
+                        downVoters={post.downVoters}
+                        _id={postID}
+                        updated={updated}
+                        setUpdated={setUpdated}
+                    />
                 </div>
             </div>
             <div className={'comments'}>
