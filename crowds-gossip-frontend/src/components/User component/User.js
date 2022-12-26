@@ -19,7 +19,6 @@ function UserInMessages({uID}) {
 
   useEffect(() => {
     if(user) {
-      console.log(user);
       setName(user.name)
     }
       
