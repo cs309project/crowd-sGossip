@@ -6,12 +6,20 @@ import ListUsers from '../../components/list users component/ListUsers'
 import './Feed.css'
 import SidePanel from '../../components/Side-Panel-component/SidePanel';
 
-function Feed({currentUser, followings, followers,name,profileIcon,posts}) {
+function Feed({currentUser}) {
 
     const [unreadPosts, setUnreadPosts] = useState([])
+    const [userName, setUserName] = useState('')
+    const [followings, setFollowings] = useState([])
+    const [followers, setFollowers] = useState([])
+    const [profileIcon, setProfileIcon] = useState('')
+
     useEffect(() => {
-        setUnreadPosts(posts);
-      }, [posts]);
+        setUnreadPosts(currentUser.unreadPosts);
+        setUserName(currentUser.name);
+        setFollowings(currentUser.following);
+        setFollowers(currentUser.followers);
+      }, [currentUser]);
 
     return (
         <div className='feed-container'>
@@ -20,7 +28,7 @@ function Feed({currentUser, followings, followers,name,profileIcon,posts}) {
             </div>
             <div className='div-flex'>
                 <div className='side-panel-left-container'>
-                    <SidePanel userName={currentUser.name}/>
+                    <SidePanel userName={userName}/>
                 </div>
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
@@ -35,7 +43,7 @@ function Feed({currentUser, followings, followers,name,profileIcon,posts}) {
                 </div>
                 <div className='main-container'>
                     <div className='cp-container'>
-                        <p>Hi, {name}!</p>
+                        <p>Hi, {userName}!</p>
                         <CreatePost profileIcon={profileIcon} />
                     </div>
                     <div className='pl-container'>
