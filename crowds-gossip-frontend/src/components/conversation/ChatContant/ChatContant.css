@@ -25,7 +25,7 @@
   color: #000;
 }
 .content__body {
-  height: calc(100vh - calc(100vh / 2));
+  height: 71vh;
   overflow: auto;
 }
 .chat__item {
