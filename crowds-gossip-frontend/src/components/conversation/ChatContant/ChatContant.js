@@ -1,119 +1,71 @@
-import React, { createRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./ChatContant.css";
-import Avatar from "../ChatList/Avatar";
+// import Avatar from "../ChatList/Avatar";
 import ChatItem from "./ChatItem";
+import { getChatById } from "../../../API/Chat";
+import { Avatar } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+import AddIcon from '@mui/icons-material/Add';
 
 
-export default function ChatContent() {
-  const messagesEndRef = createRef(null);
-  const chatItms = [
-    {
-      key: 1,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/235884857_647255233643401_3598849319933273889_n.jpg?ccb=11-4&oh=01_AdQ_65C6_NsIsY9_UATPkHFcAjZoQm9FRPxc99s3a7ISzw&oe=63B304E0",
-      type: "",
-      msg: "Hi Tim, How are you?",
-    },
-    {
-      key: 2,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-      type: "other",
-      msg: "I am fine.",
-    },
-    {
-      key: 3,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-      type: "other",
-      msg: "What about you?",
-    },
-    {
-      key: 4,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/235884857_647255233643401_3598849319933273889_n.jpg?ccb=11-4&oh=01_AdQ_65C6_NsIsY9_UATPkHFcAjZoQm9FRPxc99s3a7ISzw&oe=63B304E0",
-      type: "",
-      msg: "Awesome these days.",
-    },
-    {
-      key: 5,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-      type: "other",
-      msg: "Finally. What's the plan?",
-    },
-    {
-      key: 6,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/235884857_647255233643401_3598849319933273889_n.jpg?ccb=11-4&oh=01_AdQ_65C6_NsIsY9_UATPkHFcAjZoQm9FRPxc99s3a7ISzw&oe=63B304E0",
-      type: "",
-      msg: "what plan mate?",
-    },
-    {
-      key: 7,
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-      type: "other",
-      msg: "I'm taliking about the tutorial",
-    },
-  ];
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     chat: this.chatItms,
-  //     msg: "",
-  //   };
-  // }
-
-  const [chat, setChat] = useState(chatItms)
+export default function ChatContent({ currentUser, chatItem, socket, chosenUser, setpopupVisibilty, setDeleteMessage, setChosenChatId }) {
+  const messagesEndRef = useRef(null);
+  const [chat, setChat] = useState([])
   const [msg, setMsg] = useState("")
+  const [user, setUser] = useState({})
+  console.log(chatItem);
 
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (e.keyCode === 13) {
-        if (msg !== "") {
-          chatItms.push({
-            key: 1,
-            type: "",
-            msg: msg,
-            image:
-              "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-          });
-          // this.setState({ chat: [...this.chatItms] });
-          setChat([...chatItms])
-          scrollToBottom();
-          setMsg("")
-          // this.setState({ msg: "" });
-        }
-      }
-    });
-    scrollToBottom();
-  }, [])
+  const sendMessage = () => {
+    socket.emit('sendMessage', {
+      _id: chatItem.chatId,
+      sender: currentUser._id,
+      message: msg
+    })
+  }
 
-  // componentDidMount() {
-  //   window.addEventListener("keydown", (e) => {
-  //     if (e.keyCode === 13) {
-  //       if (this.state.msg !== "") {
-  //         this.chatItms.push({
-  //           key: 1,
-  //           type: "",
-  //           msg: this.state.msg,
-  //           image:
-  //             "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-  //         });
-  //         this.setState({ chat: [...this.chatItms] });
-  //         this.scrollToBottom();
-  //         this.setState({ msg: "" });
-  //       }
-  //     }
-  //   });
-  //   this.scrollToBottom();
-  // }
+
+  useEffect(() => {
+    if (chatItem && chosenUser) {
+      async function getChat() {
+        console.log(chatItem.chatId);
+        await getChatById(chatItem.chatId.toString()).then(e => {
+          console.log(e);
+          setChat(e.conversation)
+        })
+        setChosenChatId(chatItem.chatId)
+        setUser(chosenUser)
+        scrollToBottom();
+      }
+      getChat()
+    }
+
+    if (chatItem && chosenUser) {
+      socket.on('chatUpdated', async () => {
+        await getChatById(chatItem.chatId.toString()).then(e => {
+          console.log(e);
+          setChat(e.conversation)
+        })
+        setUser(chosenUser)
+        scrollToBottom();
+      })
+    }
+  }, [chatItem, socket, chosenUser])
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [msg])
+
+  useEffect(() => {
+    if (chatItem) {
+      scrollToBottom()
+      console.log(chosenUser);
+    }
+  }, [chosenUser, chatItem])
+
   const onStateChange = (e) => {
     setMsg(e.target.value)
   };
@@ -123,11 +75,15 @@ export default function ChatContent() {
       <div className="content__header">
         <div className="blocks">
           <div className="current-chatting-user">
-            <Avatar
+            {/* <Avatar
               isOnline="active"
               image="https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B"
+            /> */}
+            <Avatar
+              src={user.profilePic ? user.profilePic : ""}
+              style={{ marginRight: '8px' }}
             />
-            <p>Yousef negm</p>
+            <p>{user.name}</p>
           </div>
         </div>
 
@@ -143,17 +99,23 @@ export default function ChatContent() {
       </div>
       <div className="content__body">
         <div className="chat__items">
-          {chat.map((itm, index) => {
+          {chat && chat.length ? chat.map((itm, index) => {
             return (
               <ChatItem
+                currentUser={currentUser}
                 animationDelay={index + 2}
-                key={itm.key}
-                user={itm.type ? itm.type : "me"}
-                msg={itm.msg}
+                key={index}
+                user={itm.sender === currentUser._id ? "me" : "other"}
+                msg={itm.message}
                 image={itm.image}
+                time={itm.time}
+                sender={itm.sender}
+                setpopupVisibilty={setpopupVisibilty}
+                setDeleteMessage={setDeleteMessage}
               />
             );
-          })}
+          }) : null
+          }
           <div ref={messagesEndRef} />
         </div>
       </div>
@@ -161,10 +123,12 @@ export default function ChatContent() {
         <div className="sendNewMessage">
           <button className="addFiles">
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-align-middle" viewBox="0 0 16 16">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-align-middle" viewBox="0 0 16 16">
               <path d="M6 13a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v10zM1 8a.5.5 0 0 0 .5.5H6v-1H1.5A.5.5 0 0 0 1 8zm14 0a.5.5 0 0 1-.5.5H10v-1h4.5a.5.5 0 0 1 .5.5z" />
-            </svg>
-
+            </svg> */}
+            <AddIcon
+              style={{ margin: '5px' }}
+            />
           </button>
           <input
             type="text"
@@ -172,10 +136,17 @@ export default function ChatContent() {
             onChange={onStateChange}
             value={msg}
           />
-          <button className="btnSendMsg" id="sendMsgBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-amd" viewBox="0 0 16 16">
+          <button
+            className="btnSendMsg"
+            id="sendMsgBtn"
+            onClick={sendMessage}
+          >
+            {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-amd" viewBox="0 0 16 16">
               <path d="m.334 0 4.358 4.359h7.15v7.15l4.358 4.358V0H.334ZM.2 9.72l4.487-4.488v6.281h6.28L6.48 16H.2V9.72Z" />
-            </svg>
+            </svg> */}
+            <SendIcon
+              style={{ margin: '5px' }}
+            />
           </button>
         </div>
       </div>
