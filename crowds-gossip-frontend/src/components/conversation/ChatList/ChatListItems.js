@@ -1,17 +1,40 @@
-import React from "react";
-import Avatar from "./Avatar";
+import { Avatar } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { getById } from "../../../API/User";
+// import Avatar from "./Avatar";
 
-export default function ChatListItems({active, image, isOnline, name, animationDelay}) {
+export default function ChatListItems({ active, isOnline, chat, animationDelay, chatIndex, setIndex, pos, setChosenUser }) {
+
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    if (chat) {
+      async function getUser() {
+        await getById(chat.user.toString()).then(e => {
+          setUser(e)
+          if (pos === chatIndex) {
+            setChosenUser(e)
+          }
+        })
+      }
+      getUser()
+    }
+  }, [chat])
+
 
   const selectChat = (e) => {
+    let index
     for (
-      let index = 0;
+      index = 0;
       index < e.currentTarget.parentNode.children.length;
       index++
     ) {
       e.currentTarget.parentNode.children[index].classList.remove("active");
     }
     e.currentTarget.classList.add("active");
+    setIndex(pos)
+    setChosenUser(user)
+    console.log(user);
   };
 
   return (
@@ -21,15 +44,17 @@ export default function ChatListItems({active, image, isOnline, name, animationD
       className={`chatlist__item ${active ? active : ""
         } `}
     >
-      <Avatar
-        image={
-          image ? image : "http://placehold.it/80x80"
-        }
+      {/* <Avatar
+        image={"http://placehold.it/80x80"}
         isOnline={isOnline}
+      /> */}
+      <Avatar
+        src={user.profilePic ? user.profilePic : ""}
+        style={{marginRight: '8px'}}
       />
 
       <div className="userMeta">
-        <p>{name}</p>
+        <p>{user.name}</p>
         <span className="activeTime">32 mins ago</span>
       </div>
     </div>
