@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 export default function ChatContent({ currentUser, chatItem, socket, chosenUser, setpopupVisibilty, setDeleteMessage, setChosenChatId }) {
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null)
   const [chat, setChat] = useState([])
   const [msg, setMsg] = useState("")
   const [user, setUser] = useState({})
@@ -25,8 +26,9 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
       sender: currentUser._id,
       message: msg
     })
+    inputRef.current.value = ""
+    setMsg("")
   }
-
 
   useEffect(() => {
     if (chatItem && chosenUser) {
@@ -135,6 +137,7 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
             placeholder="Type a message here"
             onChange={onStateChange}
             value={msg}
+            ref={inputRef}
           />
           <button
             className="btnSendMsg"
