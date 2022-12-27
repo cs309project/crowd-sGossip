@@ -14,7 +14,6 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
   const [chat, setChat] = useState([])
   const [msg, setMsg] = useState("")
   const [user, setUser] = useState({})
-  console.log(chatItem);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -33,9 +32,7 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
   useEffect(() => {
     if (chatItem && chosenUser) {
       async function getChat() {
-        console.log(chatItem.chatId);
         await getChatById(chatItem.chatId.toString()).then(e => {
-          console.log(e);
           setChat(e.conversation)
         })
         setChosenChatId(chatItem.chatId)
@@ -64,7 +61,6 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
   useEffect(() => {
     if (chatItem) {
       scrollToBottom()
-      console.log(chosenUser);
     }
   }, [chosenUser, chatItem])
 
