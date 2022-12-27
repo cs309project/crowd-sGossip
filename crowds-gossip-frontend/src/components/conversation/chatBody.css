@@ -48,7 +48,7 @@ body{height: 100%;
     transition: all 0.3s ease-in-out;
   }
   .btn:hover {
-    background-color: #4664ff;
+    background-color: rgb(154, 84, 219);
     color: #fff;
     transform: scale(1.02);
   }
@@ -80,11 +80,11 @@ body{height: 100%;
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #6c84ff;
+    background: rgb(154, 84, 219);
     border-radius: 10px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #3b5bfe;
+    background: rgb(154, 84, 219);
   }
