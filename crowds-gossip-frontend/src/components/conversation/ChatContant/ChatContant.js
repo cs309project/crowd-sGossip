@@ -45,7 +45,6 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
     if (chatItem && chosenUser) {
       socket.on('chatUpdated', async () => {
         await getChatById(chatItem.chatId.toString()).then(e => {
-          console.log(e);
           setChat(e.conversation)
         })
         setUser(chosenUser)
