@@ -55,7 +55,7 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
 
   useEffect(() => {
     scrollToBottom()
-  }, [msg])
+  }, [msg, user])
 
   useEffect(() => {
     if (chatItem) {
