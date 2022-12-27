@@ -35,16 +35,32 @@
     justify-content: space-between;
 }
 
-.popup > .confirmDelete > button{
-    background-color: rgb(154, 84, 219);
+.popup > .confirmDelete > .ac{
+    background-color: red;
     color: white ;
     font-size: medium;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    padding: 8px;
 }
 
-.popup > .confirmDelete > button:hover{
+.popup > .confirmDelete > .dc{
+    background-color: green;
+    color: white ;
+    font-size: medium;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.popup > .confirmDelete > .ac:hover{
     background-color: white;
-    color: rgb(154, 84, 219);
+    color: red;
+}
+
+.popup > .confirmDelete > .dc:hover{
+    background-color: white;
+    color: green;
 }
