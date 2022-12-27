@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Confirm.css'
 
 function Confirm({ onClose, show, deleteMessage, chatId, socket }) {
     const [shown, setShown] = useState(false);
