@@ -1,90 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./chatList.css";
 import ChatListItems from "./ChatListItems";
 
-export default function ChatList() {
-  const allChatUsers = [
-    {
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/299259224_1128106981463859_3362854679557734518_n.jpg?ccb=11-4&oh=01_AdTZ7n443HK-1Unr36rMi2bsziNJDLPI99PqmFjDnfHWNg&oe=63B3272B",
-      id: 1,
-      name: "Yousef negm",
-      active: true,
-      isOnline: true,
-    },
-    {
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/310525625_191236136733020_1898475516685164076_n.jpg?ccb=11-4&oh=01_AdQ7qiljPgL9VGGcP999DdLWfh5aGkQnXpCRqY5B7SOl6A&oe=63B31C7F",
-      id: 2,
-      name: "yosef Alla",
-      active: false,
-      isOnline: false,
-    },
-    {
-      image:
-        "https://pps.whatsapp.net/v/t61.24694-24/218346166_512835169796415_4795743717012061165_n.jpg?ccb=11-4&oh=01_AdQlj1ivML72QeVK3u_pfuvWb7W3b3rqdeLx8woDZDId4g&oe=63B30B57",
-      id: 3,
-      name: "John",
-      active: false,
-      isOnline: false,
-    },
-    {
-      image: "",
-      id: 4,
-      name: "Mohmamed",
-      active: false,
-      isOnline: true,
-    },
-    {
-      image: "",
-      id: 5,
-      name: "ibrahim",
-      active: false,
-      isOnline: false,
-    },
-    {
-      image: "",
-      id: 6,
-      name: "israa",
-      active: false,
-      isOnline: true,
-    },
-    {
-      image: "",
-      id: 7,
-      name: "Hasan ",
-      active: false,
-      isOnline: true,
-    },
-    {
-      image: "",
-      id: 8,
-      name: "yassen",
-      active: false,
-      isOnline: false,
-    },
-    {
-      image: "",
-      id: 9,
-      name: "noura",
-      active: false,
-      isOnline: true,
-    },
-    {
-      image: "",
-      id: 10,
-      name: "gmal",
-      active: false,
-      isOnline: true,
-    },
-  ];
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     allChats: this.allChatUsers,
-  //   };
-  // }
-  const [allChats, setAllChats] = useState(allChatUsers)
+export default function ChatList({ currentUser, chatList, indexChat, setIndexChat, setChosenUser }) {
+
+  const [allChats, setAllChats] = useState([])
+
+  useEffect(() => {
+    if (chatList) {
+      setAllChats(chatList)
+    }
+  }, [chatList])
+
+
   return (
     <div className="main__chatlist">
       <button className="btn">
@@ -118,18 +46,22 @@ export default function ChatList() {
         </div>
       </div>
       <div className="chatlist__items">
-        {allChats.map((item, index) => {
+        {allChats && allChats.length ? allChats.map((item, index) => {
           return (
             <ChatListItems
-              name={item.name}
-              key={item.id}
+              key={index}
               animationDelay={index + 1}
               active={item.active ? "active" : ""}
               isOnline={item.isOnline ? "active" : ""}
-              image={item.image}
+              chat={item}
+              setIndex={setIndexChat}
+              pos={index}
+              setChosenUser={setChosenUser}
+              chatIndex={indexChat}
             />
           );
-        })}
+        }) : null
+        }
       </div>
     </div>
   );
