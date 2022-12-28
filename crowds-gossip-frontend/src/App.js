@@ -4,18 +4,26 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Register from "./pages/register/Register";
 import Feed from "./pages/home/Feed";
-import { getById } from './API/User.js';
+import { getById, getByToken } from './API/User.js';
 import ChatBody from './components/conversation/ChatBody.js'
-
+import { Cookies } from 'react-cookie';
 function App() {
+  const cookie = new Cookies()
+  const token = cookie.get('Authorization')
 
   const [user, setUser] = useState("")
 
   useEffect(() => {
-
+   
     async function getUser() {
+      if (!token){
       setUser(await getById("63a863b76bf5da3e17053b58"))
     }
+    else{
+      setUser(await getByToken(token))
+    }
+  }
+    
 
     getUser()
   }, [])

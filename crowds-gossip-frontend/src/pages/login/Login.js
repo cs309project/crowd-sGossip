@@ -5,7 +5,7 @@ import{ Link ,useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import Logo from "../../assets/logo2.png";
 import * as API from '../../API/User'
-
+import { Cookies } from "react-cookie";
 import {ToastContainer,toast} from"react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,6 +41,8 @@ import "react-toastify/dist/ReactToastify.css";
         toast.error('invalid email or password',toastOptions)
         return false
       }else{
+        const cookie=new Cookies()
+        cookie.set('Authorization','Bearer '+res.data.token)
         navigate('/')
         return true
       }

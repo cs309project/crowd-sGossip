@@ -1,17 +1,23 @@
 import axios from 'axios';
+import { Cookies } from "react-cookie";
 const proxy = 'http://localhost:8000/'
 
+const cookie = new Cookies()
+  const token = cookie.get('Authorization')
+
+
 export const getUsers = async ()=> {
-    return await (await axios.get('http://localhost:8000/users')).data
+    return await (await axios.get('http://localhost:8000/users',{ headers: { 'Authorization': token } })).data
 }
 export const getById = async (id) => {return await (await axios.get(`${proxy}users/user/${id}`)).data }
+export const getByToken = async (token) => {return await (await axios.get(`${proxy}users/usertoken/${token}`)).data }
 
 export const register = async (user)=>{
     const {name,email,password}=user
     return await axios.post('http://localhost:8000/users/register',{
         name:name,
         email:email,
-        password:password
+        password:password      
     })
 }
 export const login = async(user)=>{
@@ -19,9 +25,9 @@ export const login = async(user)=>{
     return await axios.post('http://localhost:8000/users/login',{
         email:email,
         password:password
-    })
+    } )
 }
 
 export const userSearch = async (sname)=>{
-    return await (await axios.get(`${proxy}users/userSearch?sname=${sname}`)).data
+    return await (await axios.get(`${proxy}users/userSearch?sname=${sname}`,{ headers: { 'Authorization': token } })).data
 }
