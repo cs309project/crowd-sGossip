@@ -25,7 +25,7 @@ function Feed() {
             </div>
             <div className='div-flex'>
                 <div className='side-panel-left-container'>
-                    <SidePanel userName={user.name}/>
+                    <SidePanel profileIcon={user.photo} userName={user.name}/>
                 </div>
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
@@ -41,7 +41,7 @@ function Feed() {
                 <div className='main-container'>
                     <div className='cp-container'>
                         <p>Hi, {user.name}!</p>
-                        <CreatePost profileIcon={""} />
+                        <CreatePost profileIcon={user.photo} />
                     </div>
                     <div className='pl-container'>
                         <PostsList Posts={user.unreadPosts}/>

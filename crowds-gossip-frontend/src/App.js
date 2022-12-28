@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route ,useNavigate} from "react-router-dom";
 import Register from "./pages/register/Register";
 import Feed from "./pages/home/Feed";
-import { getById } from './API/User.js';
 import ChatBody from './components/conversation/ChatBody.js'
 import { Cookies } from 'react-cookie';
 import UserPage from './pages/user-Page/UserPage';

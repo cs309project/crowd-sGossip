@@ -43,6 +43,7 @@ function Post({ postID }) {
                 setComments(post.comments)
                 await getById(post.author.toString()).then(e => {
                     setAuthorName(e.name)
+                    setProfileIcon(e.photo)
                 })
             }
             setPostData()
@@ -89,7 +90,6 @@ function Post({ postID }) {
                         return <Comment
                             text={value.comment}
                             commenterId={value.commenter}
-                            profilePic={value.profilePic}
                             key={index} />
                     }) : null
                 }

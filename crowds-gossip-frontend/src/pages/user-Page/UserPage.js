@@ -6,6 +6,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Header from '../../components/header-component/Header';
 import SidePanel from '../../components/Side-Panel-component/SidePanel.js';
 import * as API from '../../API/User'
+import { IKImage, IKContext } from 'imagekitio-react';
 
 async function handleEditProfileButton() {
 
@@ -29,14 +30,12 @@ function UserPage() {
                 <Header />
             </div>
             <div className='Side-left-panel'>
-                <SidePanel profileIcon={""} userName={user.name} />
+                <SidePanel profileIcon={user.photo} userName={user.name} />
             </div>
             <div className='Body'>
                 <div className='ProfileView'>
                     <div className='Img-Info_View'>
-                        <img
-                            src={""}
-                            alt={""}></img>
+                    <img src={user.photo} alt="" />
                         <div className='UserInfo'>
                             <p id='Name'>{user.name}</p>
                             <p id='Friends'>{user.follower} followers</p>
@@ -50,7 +49,7 @@ function UserPage() {
                 <div className='UserProfileContent'>
                     <div className='CreatePostView'>
                         <p>Create a Post: </p>
-                        <CreatePost profileIcon={""} />
+                        <CreatePost profileIcon={user.photo} />
                     </div>
                     <div className='FeedView'>
                         <PostsList Posts={user.posts} />
