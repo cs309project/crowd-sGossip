@@ -6,14 +6,14 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Header from '../../components/header-component/Header';
 import SidePanel from '../../components/Side-Panel-component/SidePanel.js';
 import * as API from '../../API/User'
-import { IKImage, IKContext } from 'imagekitio-react';
-
-async function handleEditProfileButton() {
-
-}
+import {  useNavigate } from 'react-router-dom';
 
 
 function UserPage() {
+    const navigate = useNavigate()
+    async function handleEditProfileButton() {
+        navigate('/profile/edit')
+    }
     const [user , setUser] = useState({})
 
     useEffect(() => {
