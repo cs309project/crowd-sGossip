@@ -11,7 +11,7 @@ function UserInMessages({uID}) {
   useEffect(() => {
     if(uID){
       async function getUser(){
-        setUser(await getById(uID.toString()))
+        await getById(uID.toString()).then((data)=>setUser(data))
       }
       getUser()
     }
@@ -20,6 +20,7 @@ function UserInMessages({uID}) {
   useEffect(() => {
     if(user) {
       setName(user.name)
+      setProfileImg(user.photo)
     }
       
   }, [user])

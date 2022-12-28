@@ -1,15 +1,17 @@
 import React, {useState , useEffect} from 'react';
 import { getById } from '../../API/User';
 import './Comment.css'
-function Comment({ commenterId, text, profilePic }) {
+function Comment({ commenterId, text }) {
 
     const [commenter, setCommenter] = useState('')
+    const [image , setImage] = useState('')
 
     useEffect(() => {
         
         async function setCommenterName(){
             await getById(commenterId.toString()).then(e => {
                 setCommenter(e.name)
+                setImage(e.photo)
             })
         }
         setCommenterName()
@@ -19,7 +21,7 @@ function Comment({ commenterId, text, profilePic }) {
     return (
         <div className='comment-container'>
             <img
-                src={profilePic}
+                src={image}
                 alt=''
             />
             <div className='comment-content'>
