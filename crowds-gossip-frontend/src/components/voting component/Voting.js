@@ -4,14 +4,13 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import './Voting.css'
 import { handleDownVote, handleUpVote } from '../../API/Post';
 
-function Voting({ currentUser ,upVoters, downVoters, _id, updated, setUpdated }) {
+function Voting({ upVoters, downVoters, _id, updated, setUpdated }) {
     const [upVotes, setUpVotes] = useState(0)
     const [downVotes, setDownVotes] = useState(0)
 
     const upVotePress = async () => {
         await handleUpVote({
             _id: _id.toString(),
-            upVoter: currentUser._id.toString(),
             upVoters,
             downVoters
         })
@@ -21,7 +20,6 @@ function Voting({ currentUser ,upVoters, downVoters, _id, updated, setUpdated })
     const downVotePress = async () => {
         await handleDownVote({
             _id: _id.toString(),
-            downVoter: currentUser._id.toString(),
             upVoters,
             downVoters
         })

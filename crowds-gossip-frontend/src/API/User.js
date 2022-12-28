@@ -3,14 +3,13 @@ import { Cookies } from "react-cookie";
 const proxy = 'http://localhost:8000/'
 
 const cookie = new Cookies()
-  const token = cookie.get('Authorization')
+const token = cookie.get('Authorization')
 
 
 export const getUsers = async ()=> {
     return await (await axios.get('http://localhost:8000/users',{ headers: { 'Authorization': token } })).data
 }
-export const getById = async (id) => {return await (await axios.get(`${proxy}users/user/${id}`)).data }
-export const getByToken = async (token) => {return await (await axios.get(`${proxy}users/usertoken/${token}`)).data }
+export const getById = async (id) => {return await (await axios.get(`${proxy}users/user/${id}`,{ headers: { 'Authorization': token } })).data }
 
 export const register = async (user)=>{
     const {name,email,password}=user
