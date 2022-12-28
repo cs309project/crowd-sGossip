@@ -3,7 +3,7 @@ import { getById } from '../../API/User.js';
 import Post from '../post component/Post'
 import './PostsList.css'
 
-function PostsList({currentUser, Posts }) {
+function PostsList({ Posts }) {
 
     const [posts, setPosts] = useState([])
 
@@ -17,7 +17,7 @@ function PostsList({currentUser, Posts }) {
                 posts && posts.length? posts.map((e, index) => {
                     return (
                         <div className='post-container' key={index}>
-                            <Post currentUser={currentUser} postID={e} />
+                            <Post postID={e} />
                         </div>
                     );
                 }):null

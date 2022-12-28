@@ -31,12 +31,12 @@ import "react-toastify/dist/ReactToastify.css";
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (e)=>{
+  const handleSubmit =  async (e)=>{
     e.preventDefault()
-    API.login({
+    await API.login({
       email:values.username,
       password:values.password
-    }).then((res)=>{
+    }).then(async (res)=>{
       if(!res.data.status){
         toast.error('invalid email or password',toastOptions)
         return false

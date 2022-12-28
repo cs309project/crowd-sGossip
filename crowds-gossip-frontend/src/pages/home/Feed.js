@@ -5,21 +5,18 @@ import PostsList from '../../components/posts list component/PostsList';
 import ListUsers from '../../components/list users component/ListUsers'
 import './Feed.css'
 import SidePanel from '../../components/Side-Panel-component/SidePanel';
+import * as API from '../../API/User'
 
-function Feed({currentUser}) {
-
-    const [unreadPosts, setUnreadPosts] = useState([])
-    const [userName, setUserName] = useState('')
-    const [followings, setFollowings] = useState([])
-    const [followers, setFollowers] = useState([])
-    const [profileIcon, setProfileIcon] = useState('')
+function Feed() {
+    const [user , setUser] = useState({})
 
     useEffect(() => {
-        setUnreadPosts(currentUser.unreadPosts);
-        setUserName(currentUser.name);
-        setFollowings(currentUser.following);
-        setFollowers(currentUser.followers);
-      }, [currentUser]);
+        const getUser = async ()=>{
+            setUser(await API.getById())
+        }
+        getUser()
+        
+    }, []);
 
     return (
         <div className='feed-container'>
@@ -28,26 +25,26 @@ function Feed({currentUser}) {
             </div>
             <div className='div-flex'>
                 <div className='side-panel-left-container'>
-                    <SidePanel userName={userName}/>
+                    <SidePanel userName={user.name}/>
                 </div>
                 <div className='side-panel-right-container'>
                     <p>People you follow</p>
                     <div className='scroll'>
-                        <ListUsers props={followings} />
+                        <ListUsers props={user.following} />
                     </div>
                     <hr />
                     <p>People who follow you</p>
                     <div className='scroll'>
-                        <ListUsers props={followers} />
+                        <ListUsers props={user.followers} />
                     </div>
                 </div>
                 <div className='main-container'>
                     <div className='cp-container'>
-                        <p>Hi, {userName}!</p>
-                        <CreatePost profileIcon={profileIcon} />
+                        <p>Hi, {user.name}!</p>
+                        <CreatePost profileIcon={""} />
                     </div>
                     <div className='pl-container'>
-                        <PostsList currentUser={currentUser} Posts={unreadPosts}/>
+                        <PostsList Posts={user.unreadPosts}/>
                     </div>
                 </div>
             </div>
