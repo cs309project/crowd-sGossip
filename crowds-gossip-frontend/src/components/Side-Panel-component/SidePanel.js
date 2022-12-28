@@ -3,15 +3,17 @@ import './SidePanel.css'
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
+import { useNavigate } from 'react-router-dom';
 
 function SidePanel({ profileIcon, userName }) {
+    const navigate = useNavigate()
     return (
         <div className='SidePanel-container'>
             <div className='HomePage-navigator'>
                 <HomeIcon className='HomeIcon' />
                 <p>Home</p>
             </div>
-            <div className='UserPage-navigator'>
+            <div className='UserPage-navigator' onClick={()=>navigate("/user")}>
                 <img src={profileIcon}></img>
                 <p>{userName}</p>
             </div>
