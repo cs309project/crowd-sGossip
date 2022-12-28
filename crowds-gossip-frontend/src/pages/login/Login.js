@@ -21,7 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
   //values di el haga elly 3ndy 
   //set values di el haga elly bttghayr
   const [values, setValues] = useState({
-    username: "",
+    email: "",
     password: "",
    });
   //btshtghl lma el A ttghiar
@@ -34,7 +34,7 @@ import "react-toastify/dist/ReactToastify.css";
   const handleSubmit =  async (e)=>{
     e.preventDefault()
     await API.login({
-      email:values.username,
+      email:values.email,
       password:values.password
     }).then(async (res)=>{
       if(!res.data.status){
