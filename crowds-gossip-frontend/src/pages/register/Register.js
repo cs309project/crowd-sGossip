@@ -90,7 +90,7 @@ flex-direction :column;
 justify-content :center;
 gap:1rem;
 align-items :Center;
-background-color:#131315;
+background-color: #f4f3f8;
 .brand{
     display:flex;
     align-items:center;
@@ -102,7 +102,7 @@ background-color:#131315;
     }
 }
 h1{
-    color: white;
+    color: black;
     text-transform: uppercase;
     
     
@@ -112,23 +112,19 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color:  #f4f3f8;
     border-radius:2rem;
     padding: 2rem 4rem;
-    box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
+    box-shadow: 0 15px 250px rgba(100, 100, 100, 5);
  
  input{
     background-color: transparent;
-    padding: 1rem;
-    border-bottom: 1px solid #fff;
+    padding: 1rem 0.3rem ;
     border-radius: 0.4rem;
-    color: white;
+    color: black;
     width: 100%;
     font-size: 1rem;
-    &:focus{
-       border: 0.1rem solid #997af0;
-       outline:none;
-    }
+   
 }
 button{
     background-color: black;
@@ -147,7 +143,8 @@ button{
     box-shadow: 0 0 2px #8F7CEC, 0 0 10px #8F7CEC, 0 0 10px #8F7CEC, 0 0 30px #8F7CEC;
  }
  span{
-    color:white;
+    color:black;
+    font-weight: bold;
     padding: 1rem 2rem ;
     
     text-transform:uppercase;
