@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Avatar extends Component {
+export default function Avatar({image, isOnline}) {
 
-  render() {
-    return (
-      <div className="avatar">
-        <div className="avatar-img">
-          <img src={this.props.image} alt="#" />
-        </div>
-        <span className={`isOnline ${this.props.isOnline}`}></span>
+  return (
+    <div className="avatar">
+      <div className="avatar-img">
+        <img src={image} alt="#" />
       </div>
-    );
-  }
+      <span className={`isOnline ${isOnline}`}></span>
+    </div>
+  );
 }

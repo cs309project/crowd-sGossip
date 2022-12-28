@@ -3,12 +3,14 @@ import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import Logo from '../logo-component/Logo.js';
 import Search from '../search bar/Search.js';
 import './Header.css';
-
-async function handleChatButton() {
-
-}
+import { useNavigate } from 'react-router';
 
 function Header() {
+    const navigate = useNavigate()
+    async function handleChatButton() {
+        navigate('/chat')
+    }
+
     return (
         <header className='Header'>
             <div className='Logo'>
