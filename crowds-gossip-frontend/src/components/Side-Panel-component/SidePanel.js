@@ -20,7 +20,7 @@ function SidePanel({ profileIcon, userName,userId }) {
                 <HomeIcon className='HomeIcon' />
                 <p>Home</p>
             </div>
-            <div className='UserPage-navigator' onClick={()=>navigate("/profile",{state:{id:userId}})}>
+            <div className='UserPage-navigator' onClick={()=>navigate("/profile")}>
                 <img src={profileIcon}></img>
                 <p>{userName}</p>
             </div>
