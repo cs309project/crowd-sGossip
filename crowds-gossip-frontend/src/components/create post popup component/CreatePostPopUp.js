@@ -48,7 +48,7 @@ function CreatePostPopUp(props) {
                     className={'input'}
                     placeholder={"What's in your mind?"}
                 />
-                <img src={photo} alt={""} onClick={handleClick}/>
+                <img src={photo} alt={""} onClick={handleClick} style={{width: '200px'}}/>
 
                 <div className='confirmPost'>
                     <AddPhotoAlternateIcon className={'add-photo'} onClick={handleClick}/>
