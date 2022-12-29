@@ -5,11 +5,12 @@ import ChatContent from "./ChatContant/ChatContant";
 import UserProfile from "./UserProfile/UserProfile";
 import io from 'socket.io-client'
 import Confirm from "./ChatContant/confirm component/Confirm";
+import * as API from '../../API/User'
 
 const socket = io.connect('http://localhost:8001')
 
-export default function ChatBody({ currentUser }) {
-
+export default function ChatBody() {
+  const [currentUser,setCurrentUser] = useState({})
   const [chatList, setChatList] = useState([])
   const [chatIndex, setChatIndex] = useState(0)
   const [chosenUser, setChosenUser] = useState({})
@@ -22,10 +23,16 @@ export default function ChatBody({ currentUser }) {
   };
 
   useEffect(() => {
-    if (currentUser) {
-      setChatList(currentUser.chats)
+    const getUser = async ()=>{
+      await API.getById().then(res=>setCurrentUser(res))
     }
-  }, [currentUser])
+    getUser()
+  }, [])
+
+  useEffect(()=>{
+    if(currentUser)
+      setChatList(currentUser.chats)
+  },[currentUser])
 
   return (
     <div className="main__chatbody">
@@ -38,7 +45,7 @@ export default function ChatBody({ currentUser }) {
       />
       <ChatContent
         currentUser={currentUser}
-        chatItem={chatList[chatIndex]}
+        chatItem={chatList?chatList[chatIndex]:null}
         socket={socket}
         chosenUser={chosenUser}
         setpopupVisibilty={setPopupVisibilty}

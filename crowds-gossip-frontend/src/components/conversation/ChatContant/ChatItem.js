@@ -1,7 +1,15 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React,{useEffect,useState} from "react";
+import * as API from '../../../API/User'
 // import Avatar from "../ChatList/Avatar";
 export default function ChatItem({ currentUser, user, msg, image, setpopupVisibilty, setDeleteMessage, time, sender }) {
+  const [thesender,setThesender] = useState()
+  useEffect(() => {
+    const getUser = async ()=>{
+      await API.getById(sender).then(res=>setThesender(res))
+    }
+    getUser()
+  }, [])
   return (
     <div
       style={{ animationDelay: `0.8s` }}
@@ -26,7 +34,7 @@ export default function ChatItem({ currentUser, user, msg, image, setpopupVisibi
       </div>
       {/* <Avatar isOnline="active" image={image} /> */}
       <Avatar
-        src={user.profilePic ? user.profilePic : ""}
+        src={thesender?thesender.photo:currentUser.photo}
         style={{ margin: '8px' }}
       />
     </div>

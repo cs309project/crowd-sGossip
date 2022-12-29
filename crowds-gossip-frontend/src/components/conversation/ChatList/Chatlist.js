@@ -24,19 +24,7 @@ export default function ChatList({ currentUser, chatList, indexChat, setIndexCha
           <i className="fa fa-ellipsis-h"></i>
         </button>
       </div>
-      <div className="chatList__search">
-        <div className="search_wrap">
-          <input type="text" placeholder="Search Here" required />
-          <button className="search-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg>
-            {/* <i className="fa fa-search"></i>
-              <i class="fas fa-search"></i> */}
-
-          </button>
-        </div>
-      </div>
+      
       <div className="chatlist__items">
         {allChats && allChats.length ? allChats.map((item, index) => {
           return (

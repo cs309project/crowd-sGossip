@@ -25,7 +25,7 @@ function App() {
   return (
     <Routes>
       <Route exact path={'/'} element={<Feed />} />
-      <Route path={'/chat'} element={<ChatBody currentUser={user}/>} />
+      <Route path={'/chat'} element={<ChatBody />} />
       <Route path={'/login'} element={<Login />} />
       <Route path={'/register'} element={<Register />} />
       <Route path={'profile'} element={<UserPage />} />

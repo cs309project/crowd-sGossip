@@ -73,7 +73,7 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
         <div className="blocks">
           <div className="current-chatting-user">
             <Avatar
-              src={user.profilePic ? user.profilePic : ""}
+              src={user.photo ? user.photo : ""}
               style={{ marginRight: '8px' }}
             />
             <p>{user.name}</p>
@@ -104,11 +104,6 @@ export default function ChatContent({ currentUser, chatItem, socket, chosenUser,
       </div>
       <div className="content__footer">
         <div className="sendNewMessage">
-          <button className="addFiles">
-            <AddIcon
-              style={{ margin: '5px' }}
-            />
-          </button>
           <input
             type="text"
             placeholder="Type a message here"

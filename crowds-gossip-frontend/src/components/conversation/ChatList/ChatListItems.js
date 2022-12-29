@@ -49,7 +49,7 @@ export default function ChatListItems({ active, isOnline, chat, animationDelay, 
         isOnline={isOnline}
       /> */}
       <Avatar
-        src={user.profilePic ? user.profilePic : ""}
+        src={user.photo ? user.photo : ""}
         style={{marginRight: '8px'}}
       />
 
