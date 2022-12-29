@@ -1,9 +1,11 @@
 import './Post.css'
-import React, { useState, useEffect , useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Comment from '../comment-component/Comment'
 import Voting from '../voting component/Voting';
-import { addComment, getPostsById } from '../../API/Post.js';
+import { addComment, deletePost, editPost, getPostsById } from '../../API/Post.js';
 import { getById, } from '../../API/User';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import ConfirmPostDelete from './post confirm delete/ConfirmPostDelete';
 
 function Post({ postID }) {
 
@@ -15,16 +17,39 @@ function Post({ postID }) {
     const [profileIcon, setProfileIcon] = useState('')
     const [photoLink, setPhotoLink] = useState('')
     const [updated, setUpdated] = useState(false)
+    const [visibility, setVisibility] = useState(false);
+    const [currentUser, setCurrentUser] = useState('')
+    const [editText, setEditText] = useState('')
     const ref = useRef(null)
 
+    const popupCloseHandler = () => {
+        setVisibility(false);
+    };
 
     const change = (e) => {
         setCommentText(e.target.value)
     }
+
     const handleAddComment = async () => {
         await addComment({ _id: postID, comment: commentText })
         setUpdated(!updated)
-        ref.current.value=""
+        ref.current.value = ""
+    }
+
+    const actionDelete = async () => {
+        await deletePost(post._id)
+        setVisibility(false)
+    }
+
+    const actionSave = async () => {
+        await editPost({_id: post._id.toString(), content: editText})
+        setVisibility(false)
+    }
+
+    const showPopup = () => {
+        if (JSON.stringify(currentUser._id) === JSON.stringify(post.author)) {
+            setVisibility(true)
+        }
     }
 
     useEffect(() => {
@@ -40,10 +65,14 @@ function Post({ postID }) {
         if (post) {
             async function setPostData() {
                 setText(post.content)
+                setEditText(post.content)
                 setComments(post.comments)
                 await getById(post.author.toString()).then(e => {
                     setAuthorName(e.name)
                     setProfileIcon(e.photo)
+                })
+                await getById().then(e => {
+                    setCurrentUser(e)
                 })
             }
             setPostData()
@@ -68,6 +97,9 @@ function Post({ postID }) {
                     </div>
                 </div>
                 <div className='voting'>
+                    <MoreHorizIcon
+                        onClick={showPopup}
+                    />
                     <Voting
                         upVoters={post.upVoters}
                         downVoters={post.downVoters}
@@ -94,6 +126,15 @@ function Post({ postID }) {
                     }) : null
                 }
             </div>
+            <ConfirmPostDelete
+                onClose={popupCloseHandler}
+                show={visibility}
+                actionDelete={actionDelete}
+                postText={text}
+                actionSave={actionSave}
+                setEditText={setEditText}
+                editText={editText}
+            />
         </div>
     );
 }
