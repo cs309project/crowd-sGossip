@@ -35,6 +35,6 @@ export const addImage = async (photo)=>{
     return await (await axios.post(`${proxy}users/addImage`,{photo:photo},{ headers: { 'Authorization': token } })).data
 }
 
-export const updateUser = async (photo,name)=>{
+export const updateUser = async (name,photo)=>{
     return await (await axios.post(`${proxy}users/update`,{photo:photo,name:name},{ headers: { 'Authorization': token } })).data
 }
