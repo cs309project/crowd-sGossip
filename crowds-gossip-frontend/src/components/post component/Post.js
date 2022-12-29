@@ -42,7 +42,7 @@ function Post({ postID }) {
     }
 
     const actionSave = async () => {
-        await editPost({_id: post._id.toString(), content: editText})
+        await editPost({ _id: post._id.toString(), content: editText })
         setVisibility(false)
     }
 
@@ -121,8 +121,13 @@ function Post({ postID }) {
                     comments && comments.length ? comments.map((value, index) => {
                         return <Comment
                             text={value.comment}
+                            postID={post._id}
                             commenterId={value.commenter}
-                            key={index} />
+                            key={index}
+                            time={value.time}
+                            updated={updated}
+                            setUpdated={setUpdated}
+                        />
                     }) : null
                 }
             </div>
