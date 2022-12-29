@@ -7,8 +7,8 @@ const cookie = new Cookies()
 const token = cookie.get('Authorization')
 
 
-export const addPost = async ({ content,photo="" }) => {
-    await axios.post(`${proxy}posts/add`, { content,photo }, { headers: { 'Authorization': token } })
+export const addPost = async ({ content, photo = "" }) => {
+    await axios.post(`${proxy}posts/add`, { content, photo }, { headers: { 'Authorization': token } })
 }
 
 
@@ -21,62 +21,34 @@ export const addComment = async ({ _id, comment }) => {
     await axios.post(`${proxy}posts/addComment`, { _id, comment }, { headers: { 'Authorization': token } })
 }
 
-export const handleUpVote = async ({ _id, upVoters, downVoters }) => {
-    let found = false
-    const upVoter = await getById()
-    for (let i = 0; i < upVoters.length; i++) {
-        if (JSON.stringify(upVoters[i] === JSON.stringify(upVoter._id.toString()))) {
-            await axios.post(`${proxy}posts/removeUpVote`, {
-                _id,
-                upVoter: upVoter._id.toString()
-            }, { headers: { 'Authorization': token } })
-            found = true
-            break
-        }
-    }
-    if (!found) {
-        for (let i = 0; i < downVoters.length; i++) {
-            if (JSON.stringify(downVoters[i] === JSON.stringify(upVoter._id.toString()))) {
-                await axios.post(`${proxy}posts/removeDownVoter`, {
-                    _id,
-                    downVoters: upVoter._id.toString()
-                }, { headers: { 'Authorization': token } })
-                break
-            }
-        }
+export const handleUpVote = async ({ _id }) => {
+    if (await (await axios.get(`${proxy}posts/getUpVoters/${_id.toString()}`, { headers: { 'Authorization': token } })).data.voted) {
+        await axios.post(`${proxy}posts/removeUpVote`, {
+            _id
+        }, { headers: { 'Authorization': token } })
+    } else {
+        await axios.post(`${proxy}posts/removeDownVoter`, {
+            _id,
+        }, { headers: { 'Authorization': token } })
+
         await axios.post(`${proxy}posts/addUpVote`, {
             _id,
-            upVoter: upVoter._id.toString()
         }, { headers: { 'Authorization': token } })
     }
 }
 
-export const handleDownVote = async ({ _id, upVoters, downVoters }) => {
-    let found = false
-    const downVoter = await getById()
-    for (let i = 0; i < downVoters.length; i++) {
-        if (JSON.stringify(downVoters[i] === JSON.stringify(downVoter._id))) {
-            await axios.post(`${proxy}posts/removeDownVoter`, {
-                _id,
-                downVoters: downVoter._id.toString()
-            }, { headers: { 'Authorization': token } })
-            found = true
-            break
-        }
-    }
-    if (!found) {
-        for (let i = 0; i < upVoters.length; i++) {
-            if (JSON.stringify(upVoters[i] === JSON.stringify(downVoter._id))) {
-                await axios.post(`${proxy}posts/removeUpVote`, {
-                    _id,
-                    upVoter: downVoter._id.toString()
-                }, { headers: { 'Authorization': token } })
-                break
-            }
-        }
+export const handleDownVote = async ({ _id }) => {
+    if (await (await axios.get(`${proxy}posts/getDownVoters/${_id.toString()}`, { headers: { 'Authorization': token } })).data.voted) {
+        await axios.post(`${proxy}posts/removeDownVoter`, {
+            _id
+        }, { headers: { 'Authorization': token } })
+    } else {
+        await axios.post(`${proxy}posts/removeUpVote`, {
+            _id,
+        }, { headers: { 'Authorization': token } })
+
         await axios.post(`${proxy}posts/addDownVoter`, {
             _id,
-            downVoters: downVoter._id.toString()
         }, { headers: { 'Authorization': token } })
     }
 }
