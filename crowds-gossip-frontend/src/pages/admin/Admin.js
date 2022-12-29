@@ -16,6 +16,10 @@ function Admin() {
         await API.banUser(id)
     }
 
+    async function handleUnban(id) {
+        await API.unbanUser(id)
+    }
+
     useEffect(() => {
         const getAll = async () => {
             return await API.getUsers()
@@ -52,6 +56,7 @@ function Admin() {
                                     <p>{e.name}</p>
                                 </div>
                                 <button onClick={() => {handleBan(e._id)}}>Ban</button>
+                                <button onClick={() => {handleUnban(e._id)}}>Unban</button>
                             </div>
                         )
                     }) : userList.map((e, index) => {
@@ -62,6 +67,7 @@ function Admin() {
                                     <p>{e.name}</p>
                                 </div>
                                 <button onClick={() => {handleBan(e._id)}}>Ban</button>
+                                <button onClick={() => {handleUnban(e._id)}}>Unban</button>
                             </div>
                         )
                     })
