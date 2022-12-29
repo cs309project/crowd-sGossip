@@ -7,8 +7,8 @@ const cookie = new Cookies()
 const token = cookie.get('Authorization')
 
 
-export const addPost = async ({ content }) => {
-    await axios.post(`${proxy}posts/add`, { content }, { headers: { 'Authorization': token } })
+export const addPost = async ({ content,photo="" }) => {
+    await axios.post(`${proxy}posts/add`, { content,photo }, { headers: { 'Authorization': token } })
 }
 
 

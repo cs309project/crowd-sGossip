@@ -2,24 +2,29 @@ import React,{useEffect,useState} from 'react';
 import './Popup.css'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { addPost } from '../../API/Post.js';
-
+import { IKUpload, IKContext } from 'imagekitio-react';
+import config from '../../config'
 function CreatePostPopUp(props) {
     const [show, setShow] = useState(false);
     const [postText, setPostText] = useState("")
     const hiddenFileInput = React.useRef(null)
-
+    const [photo , setPhoto] = useState(undefined)
+    const onError = err => {
+        console.log("Error", err);
+    };
+      
+    const onSuccess = res => {
+        setPhoto(config.urlEndpoint+'/posts'+res.filePath)
+    };
     const closeHandler = (e) => {
         setShow(false);
         props.onClose(false);
     };
     const handleClick = ()=>{
-        hiddenFileInput.current.click();
-    }
-    const fileSelectedHandler = (e)=>{
-        console.log(e.target.files[0])
+        document.getElementById('upload').click()
     }
     const handlePostButton = async (e)=>{
-        await addPost({author:'63a85f9e6193bc664dd2b824' ,content: postText})
+        await addPost({content: postText,photo:photo})
         closeHandler(e)
     }
 
@@ -43,9 +48,22 @@ function CreatePostPopUp(props) {
                     className={'input'}
                     placeholder={"What's in your mind?"}
                 />
+                <img src={photo} alt={""} onClick={handleClick}/>
+
                 <div className='confirmPost'>
                     <AddPhotoAlternateIcon className={'add-photo'} onClick={handleClick}/>
-                    <input className={'add-photo'} type={'file'} ref={hiddenFileInput} placeholder='here' style={{display:"none"}} onChange={fileSelectedHandler}/>
+                    <IKContext 
+                    publicKey={config.publicKey} 
+                    urlEndpoint={config.urlEndpoint+'/users'}
+                    authenticationEndpoint={config.authEndpoint} 
+                    >
+                        <IKUpload
+                            onError={onError}
+                            onSuccess={onSuccess}
+                            id={'upload'}
+                            style={{display:'none'}}
+                        />
+                    </IKContext>
                     <button onClick={() =>{handlePostButton()}}>Post</button>
                 </div>
             </div>

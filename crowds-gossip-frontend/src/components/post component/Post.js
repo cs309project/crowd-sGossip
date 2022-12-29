@@ -7,6 +7,7 @@ import { getById, } from '../../API/User';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ConfirmPostDelete from './post confirm delete/ConfirmPostDelete';
 
+
 function Post({ postID }) {
 
     const [commentText, setCommentText] = useState('')
@@ -67,6 +68,7 @@ function Post({ postID }) {
                 setText(post.content)
                 setEditText(post.content)
                 setComments(post.comments)
+                setPhotoLink(post.photo)
                 await getById(post.author.toString()).then(e => {
                     setAuthorName(e.name)
                     setProfileIcon(e.photo)
