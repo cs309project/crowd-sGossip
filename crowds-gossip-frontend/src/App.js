@@ -28,7 +28,8 @@ function App() {
       <Route path={'/chat'} element={<ChatBody />} />
       <Route path={'/login'} element={<Login />} />
       <Route path={'/register'} element={<Register />} />
-      <Route path={'profile'} element={<UserPage />} />
+      <Route path={'/profile'} element={<UserPage />} />
+      <Route path={'/anotherProfile'} element={<UserPage />} />
       <Route path={'/profile/edit'} element={<EditProfile />} />
       <Route path={'/search'} element={<SearchUser />} />
     </Routes>

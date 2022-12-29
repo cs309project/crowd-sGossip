@@ -4,6 +4,7 @@
     background-color: white;
     border-radius: 35px;
     align-items: center;
+    cursor: pointer;
 }
 
 .UserInMessageComponent > img{

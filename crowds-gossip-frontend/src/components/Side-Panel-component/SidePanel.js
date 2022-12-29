@@ -6,8 +6,9 @@ import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import { useNavigate } from 'react-router-dom';
 import { Cookies } from "react-cookie";
 
-function SidePanel({ profileIcon, userName }) {
+function SidePanel({ profileIcon, userName,userId }) {
     const cookie = new Cookies()
+    
     const navigate = useNavigate()
     const logout = ()=>{
         cookie.remove("Authorization")
@@ -19,7 +20,7 @@ function SidePanel({ profileIcon, userName }) {
                 <HomeIcon className='HomeIcon' />
                 <p>Home</p>
             </div>
-            <div className='UserPage-navigator' onClick={()=>navigate("/profile")}>
+            <div className='UserPage-navigator' onClick={()=>navigate("/profile",{state:{id:userId}})}>
                 <img src={profileIcon}></img>
                 <p>{userName}</p>
             </div>

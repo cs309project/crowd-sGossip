@@ -33,7 +33,7 @@ function UserPage() {
         }
         getUser()
         
-    }, []);
+    }, [location.state]);
     useEffect(()=>{
         console.log(currentUser.following)
         if(currentUser.following && currentUser.following.includes(user._id.toString())){
@@ -42,6 +42,9 @@ function UserPage() {
             setIsFollowed(true)
         }
     },[user])
+
+    
+    
 
     const handleFollow = async ()=>{
         await API.followUser(user._id.toString())
@@ -56,7 +59,7 @@ function UserPage() {
                 <Header />
             </div>
             <div className='Side-left-panel'>
-                <SidePanel profileIcon={user.photo} userName={user.name} />
+                <SidePanel profileIcon={currentUser.photo} userName={currentUser.name} />
             </div>
             <div className='Body'>
                 <div className='ProfileView'>
@@ -79,10 +82,10 @@ function UserPage() {
                     
                 </div>
                 <div className='UserProfileContent'>
-                    <div className='CreatePostView'>
+                    {current?<div className='CreatePostView'>
                         <p>Create a Post: </p>
                         <CreatePost profileIcon={user.photo} />
-                    </div>
+                    </div>:<div></div>}
                     <div className='FeedView'>
                         <PostsList Posts={user.posts} />
                     </div>

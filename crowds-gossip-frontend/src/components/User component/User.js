@@ -1,9 +1,10 @@
 import React , {useState, useEffect}from 'react'
 import { getById } from '../../API/User'
 import "./User.css"
+import { useNavigate } from 'react-router-dom'
 
 function UserInMessages({uID}) {
-
+  const navigate = useNavigate()
   const [ProfileImg, setProfileImg] = useState('')
   const [name, setName] = useState('')
   const [user, setUser] = useState('')
@@ -24,10 +25,12 @@ function UserInMessages({uID}) {
     }
       
   }, [user])
-  
+  const handleClick = ()=>{
+    navigate('/profile',{state:{id:uID}})
+  }
   
   return (
-    <div className='UserInMessageComponent'>
+    <div className='UserInMessageComponent' onClick={handleClick}>
         <img src={ProfileImg}
         alt='No imag found'/>
 
