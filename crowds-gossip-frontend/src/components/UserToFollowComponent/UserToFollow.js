@@ -1,15 +1,23 @@
-import React, { useState ,useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 import './UserToFollow.css'
 import AddIcon from '@mui/icons-material/Add';
 import * as API from '../../API/User'
+import { useNavigate } from 'react-router-dom';
 
-function UserToFollow({ user }) {
-  const [followed, setfollowed] = useState('')
+function UserToFollow({ user, followed}) {
+  const navigate = useNavigate()
 
   async function FollowButtonHandeler() {
-    await API.followUser(user._id).then((res)=>setfollowed(res))
+    await API.followUser(user._id)
   }
 
+  async function unFollowButtonHandeler(){
+    await API.unfollowUser(user._id)
+  }
+
+  const handleClick = ()=>{
+    navigate('/profile',{state:{id:user._id}})
+  }
   // const [discrp, setDiscrp] = useState(() => {
   //   if (discription.length <= 90){
   //     return discription;
@@ -24,7 +32,7 @@ function UserToFollow({ user }) {
 
 
   return (
-    <div className='con'>
+    <div className='con' onClick={handleClick}>
       <div className='profileView'>
         <img className='profilePic' src={user.photo}
           alt='no img found' />

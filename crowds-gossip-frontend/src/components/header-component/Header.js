@@ -14,7 +14,7 @@ function Header({setText}) {
 
     return (
         <header className='Header'>
-            <div className='Logo'>
+            <div className='Logo' onClick={()=>navigate('/')}>
                 <Logo />
                 <p>Crowd's gossip</p>
             </div>

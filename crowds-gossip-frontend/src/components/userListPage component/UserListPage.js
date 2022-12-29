@@ -8,6 +8,7 @@ function UserListPage({text}) {
 
   const [userList, setUserList] = useState([]);
   const [searchedList,setSearchedList] = useState([])
+  const [followedList,setFollowedList] = useState([])
   
   useEffect(() => {
     const getAll = async ()=>{
@@ -26,7 +27,7 @@ function UserListPage({text}) {
       {
        searchedList.length?searchedList.map((e,index)=>{ return (
         <div key={index}>
-          <UserToFollow imgURL={e.photo} name={e.name} discription={'hey there i am using code gossip'} followers={e.followers?e.followers.length:0}/>
+          <UserToFollow user={e} followed={followedList[index]}/>
         </div>
       )}):userList.map((e , index) => {
           return (

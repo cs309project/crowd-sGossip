@@ -16,6 +16,7 @@
     align-items: center;
     width: 300px;
     height: 100%;
+    cursor: pointer;
 }
 .Logo > p {
     font-size: x-large;

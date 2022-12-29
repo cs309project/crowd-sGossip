@@ -6,7 +6,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Header from '../../components/header-component/Header';
 import SidePanel from '../../components/Side-Panel-component/SidePanel.js';
 import * as API from '../../API/User'
-import {  useNavigate } from 'react-router-dom';
+import {  useNavigate,useLocation } from 'react-router-dom';
 
 
 function UserPage() {
@@ -15,10 +15,13 @@ function UserPage() {
         navigate('/profile/edit')
     }
     const [user , setUser] = useState({})
-
+    const location = useLocation();
     useEffect(() => {
         const getUser = async ()=>{
-            setUser(await API.getById())
+            if(!location.state.id)setUser(await API.getById())
+            else{
+                setUser(await API.getById(location.state.id))
+            }
         }
         getUser()
         
@@ -38,7 +41,7 @@ function UserPage() {
                     <img src={user.photo} alt="" />
                         <div className='UserInfo'>
                             <p id='Name'>{user.name}</p>
-                            <p id='Friends'>{user.followers.length} followers</p>
+                            <p id='Friends'>{user.followers?user.followers.length:0} followers</p>
                         </div>
                     </div>
                     <button className='EditProfileButton' onClick={() => handleEditProfileButton()}>
