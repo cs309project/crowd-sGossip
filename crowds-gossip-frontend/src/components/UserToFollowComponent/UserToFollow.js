@@ -7,14 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function UserToFollow({ user, followed}) {
   const navigate = useNavigate()
 
-  async function FollowButtonHandeler() {
-    await API.followUser(user._id)
-  }
-
-  async function unFollowButtonHandeler(){
-    await API.unfollowUser(user._id)
-  }
-
+ 
   const handleClick = ()=>{
     navigate('/profile',{state:{id:user._id}})
   }
@@ -44,12 +37,6 @@ function UserToFollow({ user, followed}) {
 
       <div className='followers'>{user.followers?user.followers.length:0} followers</div>
 
-      <div className='followbuttonview' id='followbtn'>
-        <button className='followbutton' onClick={FollowButtonHandeler}>
-          <AddIcon className='addIcon'/>
-          <p className='text'>Follow</p>
-        </button>
-      </div>
     </div>
   )
 }

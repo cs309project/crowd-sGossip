@@ -40,9 +40,11 @@ export const updateUser = async (name,photo)=>{
 }
 
 export const followUser = async (uid)=>{
+    console.log(uid)
     return await (await axios.post(`${proxy}users/followUser`,{idToFollow:uid},{headers:{'Authorization':token}})).data
 }
 
 export const unfollowUser = async (uid)=>{
+    console.log(uid)
     return await (await axios.post(`${proxy}users/unfollowUser`,{idToUnfollow:uid},{headers:{'Authorization':token}})).data
 }
