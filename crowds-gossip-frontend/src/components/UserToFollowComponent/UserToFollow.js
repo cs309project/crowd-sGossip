@@ -34,7 +34,7 @@ function UserToFollow({ user }) {
 
       <div className='discription'>{"hi there i am using crowd's gossip"}</div>
 
-      <div className='followers'>{user.followers?user.followers.length:0}</div>
+      <div className='followers'>{user.followers?user.followers.length:0} followers</div>
 
       <div className='followbuttonview' id='followbtn'>
         <button className='followbutton' onClick={FollowButtonHandeler}>

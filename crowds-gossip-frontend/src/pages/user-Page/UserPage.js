@@ -38,7 +38,7 @@ function UserPage() {
                     <img src={user.photo} alt="" />
                         <div className='UserInfo'>
                             <p id='Name'>{user.name}</p>
-                            <p id='Friends'>{user.follower} followers</p>
+                            <p id='Friends'>{user.followers.length} followers</p>
                         </div>
                     </div>
                     <button className='EditProfileButton' onClick={() => handleEditProfileButton()}>
