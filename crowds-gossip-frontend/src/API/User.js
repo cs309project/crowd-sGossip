@@ -48,3 +48,7 @@ export const unfollowUser = async (uid)=>{
     console.log(uid)
     return await (await axios.post(`${proxy}users/unfollowUser`,{idToUnfollow:uid},{headers:{'Authorization':token}})).data
 }
+
+export const banUser = async (uid) =>{
+    await axios.post(`${proxy}users/block`,{id:uid} , {headers:{'Authorization':token}})
+}
