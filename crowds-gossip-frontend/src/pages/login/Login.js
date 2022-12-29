@@ -1,15 +1,15 @@
 //bstakhdmo mkan el array 3alshan brag3 mno hagat is async byhsal 3aliha life cycle w athakm fiha
-import React,{useState, /*useEffect*/ }from "react";
-import{ Link ,useNavigate } from "react-router-dom";
+import React, { useState, /*useEffect*/ } from "react";
+import { Link, useNavigate } from "react-router-dom";
 //bykhalini a style f file javaScribt
 import styled from 'styled-components';
 import Logo from "../../assets/logo2.png";
 import * as API from '../../API/User'
 import { Cookies } from "react-cookie";
-import {ToastContainer,toast} from"react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
- function Login() {
+function Login() {
   const navigate = useNavigate();
   const toastOptions = {
     position: "bottom-right",
@@ -23,33 +23,48 @@ import "react-toastify/dist/ReactToastify.css";
   const [values, setValues] = useState({
     email: "",
     password: "",
-   });
+  });
   //btshtghl lma el A ttghiar
- 
+
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit =  async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault()
     await API.login({
-      email:values.email,
-      password:values.password
-    }).then(async (res)=>{
-      if(!res.data.status){
-        toast.error('invalid email or password',toastOptions)
+      email: values.email,
+      password: values.password
+    }).then(async (res) => {
+      if (!res.data.status) {
+        toast.error('invalid email or password or You have been BANNED!!!!', toastOptions)
         return false
-      }else{
-        const cookie=new Cookies()
-        cookie.set('Authorization','Bearer '+res.data.token)
-        navigate('/')
-        return true
+      } else {
+        if (res.data.user.Role == "user") {
+          if (!res.data.user.blocked) {
+            const cookie = new Cookies()
+            cookie.set('Authorization', 'Bearer ' + res.data.token)
+            navigate('/')
+            return true
+          }
+          else {
+            toast.error('You have been BANNED!!!!', toastOptions)
+            return true
+          }
+        }
+        else if (res.data.user.Role == "admin") {
+          const cookie = new Cookies()
+          cookie.set('Authorization', 'Bearer ' + res.data.token)
+          navigate('/admin')
+          return true
+        }
+
       }
     })
   }
-  
-  
+
+
 
   return (
     <>
@@ -66,14 +81,14 @@ import "react-toastify/dist/ReactToastify.css";
             onChange={(e) => handleChange(e)}
             min="3"
           />
-          
+
           <input
             type="password"
             placeholder="Password"
             name="password"
             onChange={(e) => handleChange(e)}
           />
-          
+
           <button type="submit">Login</button>
           <span>
             Don't have an Account ? <Link to="/register">Register.</Link>
@@ -154,6 +169,6 @@ button{
 }
  }
 `;
- export default Login;
+export default Login;
 
 

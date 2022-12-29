@@ -9,6 +9,7 @@ import { Cookies } from 'react-cookie';
 import UserPage from './pages/user-Page/UserPage';
 import EditProfile from './pages/edit profile/EditProfile'
 import SearchUser from './pages/search user/SearchUser';
+import Admin from './pages/admin/Admin.js';
 function App() {
   const cookie = new Cookies()
   const token = cookie.get('Authorization')
@@ -32,6 +33,7 @@ function App() {
       <Route path={'/anotherProfile'} element={<UserPage />} />
       <Route path={'/profile/edit'} element={<EditProfile />} />
       <Route path={'/search'} element={<SearchUser />} />
+      <Route path={'/admin'} element={<Admin/>}/>
     </Routes>
   );
 }

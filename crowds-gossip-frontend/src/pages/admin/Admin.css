@@ -1,0 +1,18 @@
+.AdminContainer{
+    width: 40%;
+}
+.AdminContainer >.usersList>{
+    margin: auto;
+    border-radius: 20px;
+}
+.AdminContainer >.usersList>.banView{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+.AdminContainer >.usersList>.banView>.user{
+    display: flex;
+    align-items: center;
+}
+
