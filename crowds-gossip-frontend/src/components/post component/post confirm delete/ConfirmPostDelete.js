@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ConfirmPostDelete.css'
 
-function ConfirmPostDelete({ onClose, show, actionDelete, postText, actionSave, setEditText, editText }) {
+function ConfirmPostDelete({ show, actionDelete, postText, actionSave, setEditText, editText }) {
     const [shown, setShown] = useState(false);
 
     useEffect(() => {
