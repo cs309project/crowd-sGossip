@@ -28,8 +28,6 @@ export default function ChatItem({ currentUser, user, msg, image, setpopupVisibi
       <div className="chat__item__content">
         <div className="chat__msg">{msg}</div>
         <div className="chat__meta">
-          <span>16 mins ago</span>
-          <span>Seen 1.03PM</span>
         </div>
       </div>
       {/* <Avatar isOnline="active" image={image} /> */}
