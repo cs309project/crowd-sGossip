@@ -29,10 +29,6 @@ function SidePanel({ profileIcon, userName,userId }) {
                 <LogoutIcon className='LogoutIcon' />
                 <p>Log Out</p>
             </div>
-            <div className='ContactUsView'>
-                <PermPhoneMsgIcon className='ContactUsIcon' />
-                <p>Contact Us</p>
-            </div>
             <div className='copyRightView'>
                 <p>Privacy . Terms . Advertising.</p>
                 <p>Copy rights . More . Gossips @2022</p>
