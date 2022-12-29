@@ -5,11 +5,12 @@ import Search from '../search bar/Search.js';
 import './Header.css';
 import { useNavigate } from 'react-router';
 
-function Header() {
+function Header({setText}) {
     const navigate = useNavigate()
     async function handleChatButton() {
         navigate('/chat')
     }
+    
 
     return (
         <header className='Header'>
@@ -18,7 +19,7 @@ function Header() {
                 <p>Crowd's gossip</p>
             </div>
             <div className='SearchBar'>
-                <Search />
+                <Search setText={setText}/>
             </div>
             <button className='IconChatButtonView'
                 onClick={() => handleChatButton()}>

@@ -8,6 +8,7 @@ import ChatBody from './components/conversation/ChatBody.js'
 import { Cookies } from 'react-cookie';
 import UserPage from './pages/user-Page/UserPage';
 import EditProfile from './pages/edit profile/EditProfile'
+import SearchUser from './pages/search user/SearchUser';
 function App() {
   const cookie = new Cookies()
   const token = cookie.get('Authorization')
@@ -29,6 +30,7 @@ function App() {
       <Route path={'/register'} element={<Register />} />
       <Route path={'profile'} element={<UserPage />} />
       <Route path={'/profile/edit'} element={<EditProfile />} />
+      <Route path={'/search'} element={<SearchUser />} />
     </Routes>
   );
 }
