@@ -35,7 +35,6 @@ function UserPage() {
         
     }, [location.state]);
     useEffect(()=>{
-        console.log(currentUser.following)
         if(currentUser.following && currentUser.following.includes(user._id.toString())){
             setIsFollowed(false)
         }else{
@@ -48,9 +47,11 @@ function UserPage() {
 
     const handleFollow = async ()=>{
         await API.followUser(user._id.toString())
+        window.location.reload()
     }
     async function handleUnFollow(){
         await API.unfollowUser(user._id.toString())
+        window.location.reload()
     }
     
     return (

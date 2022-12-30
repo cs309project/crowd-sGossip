@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Cookies } from "react-cookie";
-const proxy = 'http://localhost:8000/'
+import config from "../config";
+const proxy = config.backendUrl
 
 const cookie = new Cookies()
 const token = cookie.get('Authorization')

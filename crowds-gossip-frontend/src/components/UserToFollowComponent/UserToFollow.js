@@ -9,7 +9,7 @@ function UserToFollow({ user, followed}) {
 
  
   const handleClick = ()=>{
-    navigate('/anotherProfile',{state:{id:user._id}})
+    navigate('/profile',{state:{id:user._id}})
   }
   // const [discrp, setDiscrp] = useState(() => {
   //   if (discription.length <= 90){

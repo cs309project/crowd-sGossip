@@ -26,6 +26,7 @@ function CreatePostPopUp(props) {
     const handlePostButton = async (e)=>{
         await addPost({content: postText,photo:photo})
         closeHandler(e)
+        window.location.reload()
     }
 
     useEffect(() => {

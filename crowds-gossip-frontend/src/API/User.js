@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { Cookies } from "react-cookie";
-const proxy = 'http://localhost:8000/'
+import config from '../config';
+const proxy = config.backendUrl
 
 const cookie = new Cookies()
 const token = cookie.get('Authorization')
 
 
 export const getUsers = async () => {
-    return await (await axios.get('http://localhost:8000/users', { headers: { 'Authorization': token } })).data
+    return await (await axios.get(`${proxy}/users`, { headers: { 'Authorization': token } })).data
 }
 export const getById = async (id) => { return await (await axios.get(`${proxy}users/user/${id}`, { headers: { 'Authorization': token } })).data }
 
 export const register = async (user) => {
     const { name, email, password } = user
-    return await axios.post('http://localhost:8000/users/register', {
+    return await axios.post(`${proxy}/users/register`, {
         name: name,
         email: email,
         password: password
@@ -21,7 +22,7 @@ export const register = async (user) => {
 }
 export const login = async (user) => {
     const { email, password } = user
-    return await axios.post('http://localhost:8000/users/login', {
+    return await axios.post(`${proxy}/users/login`, {
         email: email,
         password: password
     })
@@ -40,12 +41,10 @@ export const updateUser = async (name, photo) => {
 }
 
 export const followUser = async (uid) => {
-    console.log(uid)
     return await (await axios.post(`${proxy}users/followUser`, { idToFollow: uid }, { headers: { 'Authorization': token } })).data
 }
 
 export const unfollowUser = async (uid) => {
-    console.log(uid)
     return await (await axios.post(`${proxy}users/unfollowUser`, { idToUnfollow: uid }, { headers: { 'Authorization': token } })).data
 }
 

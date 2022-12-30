@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Cookies } from "react-cookie";
+import config from '../config';
 import { getById } from './User';
-const proxy = 'http://localhost:8000/'
+const proxy = config.backendUrl
 
 const cookie = new Cookies()
 const token = cookie.get('Authorization')
